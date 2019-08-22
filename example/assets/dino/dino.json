@@ -1,0 +1,190 @@
+{
+  "frames": [
+    {
+      "filename": "Run (3).png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 423,
+        "h": 376
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 5,
+        "w": 423,
+        "h": 376
+      },
+      "sourceSize": {
+        "w": 680,
+        "h": 472
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Run (1).png",
+      "frame": {
+        "x": 423,
+        "y": 0,
+        "w": 422,
+        "h": 357
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 29,
+        "y": 68,
+        "w": 422,
+        "h": 357
+      },
+      "sourceSize": {
+        "w": 680,
+        "h": 472
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Run (5).png",
+      "frame": {
+        "x": 845,
+        "y": 0,
+        "w": 419,
+        "h": 363
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 29,
+        "y": 69,
+        "w": 419,
+        "h": 363
+      },
+      "sourceSize": {
+        "w": 680,
+        "h": 472
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Run (4).png",
+      "frame": {
+        "x": 423,
+        "y": 357,
+        "w": 396,
+        "h": 417
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 45,
+        "y": 36,
+        "w": 396,
+        "h": 417
+      },
+      "sourceSize": {
+        "w": 680,
+        "h": 472
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Run (7).png",
+      "frame": {
+        "x": 0,
+        "y": 376,
+        "w": 388,
+        "h": 405
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 44,
+        "y": 8,
+        "w": 388,
+        "h": 405
+      },
+      "sourceSize": {
+        "w": 680,
+        "h": 472
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Run (2).png",
+      "frame": {
+        "x": 1264,
+        "y": 0,
+        "w": 396,
+        "h": 403
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 45,
+        "y": 36,
+        "w": 396,
+        "h": 403
+      },
+      "sourceSize": {
+        "w": 680,
+        "h": 472
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Run (6).png",
+      "frame": {
+        "x": 840,
+        "y": 363,
+        "w": 394,
+        "h": 398
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 46,
+        "y": 35,
+        "w": 394,
+        "h": 398
+      },
+      "sourceSize": {
+        "w": 680,
+        "h": 472
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.0",
+    "image": "konglong.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1667,
+      "h": 764
+    },
+    "scale": 1
+  }
+}
