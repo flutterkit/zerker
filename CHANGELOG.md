@@ -1,12 +1,20 @@
-## 1.1.2
+## 1.2.6
 
-- Add CHANGELOG.md file
+- Add example
+- Add detailed documentation
+- Increase readme
 
-## 1.1.1
+## 1.2.5
 
-- Modify some method names
-- Add more easing functions
+- Add three extension classes
+- First full version
+
+## 1.2.0
+
+- Increase sprite sheet support
+- Increase atlas support
+- Add animation
 
 ## 1.1.0
 
-- Modify the micketer structure
+- Create a base version, including ZKNode ZKImage, etc.
