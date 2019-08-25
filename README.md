@@ -1,4 +1,5 @@
-<div align=center>![logo](https://github.com/flutterkit/zerkerdocs/blob/master/logo/logo.png?raw=true)</div>
+<div align=center>![logo](https://github.com/flutterkit/zerkerdocs/blob/master/logo/logo.png?raw=true)
+
 ## What is Zerker
 
 Zerker is a flexible and lightweight flutter canvas graphic animation library.
