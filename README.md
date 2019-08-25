@@ -1,4 +1,4 @@
-<div align=center>![logo](https://github.com/flutterkit/zerkerdocs/blob/master/logo/logo.png?raw=true)
+<div align=center><img src="https://github.com/flutterkit/zerkerdocs/blob/master/logo/logo.png?raw=true"/></div>
 
 ## What is Zerker
 
@@ -9,6 +9,9 @@ With Zerker, you can create a lot of seemingly cumbersome animation effects, suc
 At the same time, you can create a lot of simple games with Zerker. Zerker contains elements such as sprites, scrolling backgrounds, and atlases, making it easy to create game worlds with them.
 
 ![An image](https://flutterkit.github.io/zerkerdocs/images/fp.png)
+
+## Installation
+
 
 CODE:
 
