@@ -1,4 +1,4 @@
-# Zerker
+[https://github.com/flutterkit/zerkerdocs/blob/master/logo/logo.png?raw=true](https://github.com/flutterkit/zerkerdocs/blob/master/logo/logo.png?raw=true)
 
 ## What is Zerker
 
