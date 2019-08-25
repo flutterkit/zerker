@@ -85,7 +85,7 @@ class MyZKApp extends ZKApp {
 }
 ```
 
-#### Initialize the scene and create elements in the init function
+#### Initialize the scene and create elements in the `init function`
 
 ```dart
 /// Create a zerker sprite
@@ -103,7 +103,7 @@ ZKSprite bigboy = ZKSprite(key: "bigboy")
 stage.addChild(bigboy);
 
 /// Create a zerker text
-ZKText  text = ZKText()
+ZKText text = ZKText()
 	..setPosition(100, 100)
 	..text = "hello world"
 	..setStyle(color: Colors.blueGrey, backgroundColor: Colors.red[50]);
@@ -111,8 +111,11 @@ ZKText  text = ZKText()
 stage.addChild(_text);
 ```
 
+## More cases
 
----
+More Zerker cases you can find below [https://github.com/flutterkit](https://github.com/flutterkit).
+If you have any questions about Zerker, please let me know by email, thank you very much!
+
 
 ## License
 Zerker is licensed under MIT license. View license. [https://github.com/flutterkit/zerker/blob/master/LICENSE](https://github.com/flutterkit/zerker/blob/master/LICENSE)
