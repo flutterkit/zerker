@@ -1,4 +1,4 @@
-![https://github.com/flutterkit/zerkerdocs/blob/master/logo/logo.png?raw=true](https://github.com/flutterkit/zerkerdocs/blob/master/logo/logo.png?raw=true)!
+<div align=center>![logo](https://github.com/flutterkit/zerkerdocs/blob/master/logo/logo.png?raw=true)</div>
 ## What is Zerker
 
 Zerker is a flexible and lightweight flutter canvas graphic animation library.
@@ -7,7 +7,7 @@ With Zerker, you can create a lot of seemingly cumbersome animation effects, suc
 
 At the same time, you can create a lot of simple games with Zerker. Zerker contains elements such as sprites, scrolling backgrounds, and atlases, making it easy to create game worlds with them.
 
-![An image](/images/phone.jpeg)
+![An image](https://flutterkit.github.io/zerkerdocs/images/fp.png)
 
 CODE:
 
