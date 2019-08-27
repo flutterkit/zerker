@@ -1,4 +1,4 @@
-<div align=center><img src="https://github.com/flutterkit/zerkerdocs/blob/master/logo/logo.png?raw=true"/></div>
+<div align=center><img src="https://flutterkit.github.io/zerkerdocs/logo/logo.png"/></div>
 
 [![pub package](https://img.shields.io/pub/v/zerker.svg)](https://pub.dartlang.org/packages/zerker)
 
