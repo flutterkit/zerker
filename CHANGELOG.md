@@ -1,3 +1,7 @@
+# 1.3.1
+- Remove uuid library dependencies
+- Fix some bugs
+
 # 1.3.0
 - fix ZKTween chain bug
 - Rewrite example

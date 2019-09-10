@@ -1,4 +1,5 @@
 /build/
+pubspec.lock
 .atom/
 .buildlog/
 .history
@@ -18,3 +19,4 @@ example/.atom/
 example/.buildlog/
 example/.history
 example/.svn/
+example/pubspec.lock
