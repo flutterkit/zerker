@@ -197,7 +197,8 @@ class Elastic extends BaseEasing {
       s = p / 4;
     } else
       s = p * asin(1 / a) / (2 * pi);
-    if ((k *= 2) < 1) return -0.5 * (a * pow(2, 10 * (k -= 1)) * sin((k - s) * (2 * pi) / p));
+    if ((k *= 2) < 1)
+      return -0.5 * (a * pow(2, 10 * (k -= 1)) * sin((k - s) * (2 * pi) / p));
     return a * pow(2, -10 * (k -= 1)) * sin((k - s) * (2 * pi) / p) * 0.5 + 1;
   }
 }

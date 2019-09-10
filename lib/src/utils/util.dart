@@ -52,21 +52,40 @@ class Util {
   ///
   /// Convert special arrays to numeric arrays
   ///  - ['2-5'] => [2,3,4,5]
+  ///  - ['run{1-3}.jpg'] => ["run1.jpg", "run2.jpg", "run3.jpg"]
   ///
   ////////////////////////////////////////////////////////////
-  static List specialNumberList(List arr) {
+  static List convertConsecutiveList(List arr, [String prefix]) {
     if (arr.length == 1 && arr[0] is String) {
       String str = arr[0];
-      RegExp exp = new RegExp(r"^([0-9]*)\-([0-9]*)$");
+      RegExp exp1 = new RegExp(r"^([0-9]*)\-([0-9]*)$");
+      RegExp exp2 = new RegExp(r"{([0-9]*)\-([0-9]*)}");
 
-      if (exp.hasMatch(str)) {
+      if (exp1.hasMatch(str) || exp2.hasMatch(str)) {
         List result = [];
-        List ints = str.split("-");
-        int a = int.parse(ints[0]);
-        int b = int.parse(ints[1]);
+        int a, b;
 
-        for (var i = a; i <= b; i++) {
-          result.add(i);
+        if (exp1.hasMatch(str)) {
+          List ints = str.split("-");
+          a = int.parse(ints[0]);
+          b = int.parse(ints[1]);
+
+          for (var i = a; i <= b; i++) {
+            result.add(i);
+          }
+        } else if (exp2.hasMatch(str)) {
+          Iterable<Match> matches = exp2.allMatches(str);
+          for (Match m in matches) {
+            String s = m.group(0);
+            s = s.replaceAll("{", "").replaceAll("}", "");
+            List ints = s.split("-");
+            a = int.parse(ints[0]);
+            b = int.parse(ints[1]);
+          }
+
+          for (var i = a; i <= b; i++) {
+            result.add(str.replaceAll(exp2, "$i"));
+          }
         }
 
         return result;

@@ -11,13 +11,12 @@ class ZKApp {
   String type = "ZKApp";
   String id = Util.uuid();
 
-  Function onDispose;
-  bool interactive = false;
   bool destroyed = false;
-  bool clip = false;
-  int fps = 60;
-
+  Function onDispose;
   ZKStage stage;
+
+  double delay = 1000 / 60;
+  int _fps = 60;
 
   ZKApp() {
     this.stage = new ZKStage();
@@ -39,6 +38,15 @@ class ZKApp {
 
   double get ratio {
     return Constant.ratio;
+  }
+
+  set fps(int f) {
+    this.delay = 1000 / f;
+    this._fps = f;
+  }
+
+  int get fps {
+    return this._fps;
   }
 
   Size get size {
@@ -97,16 +105,11 @@ class ZKApp {
   ////////////////////////////////////////////////////////////
   tapDown(ZKEvent event) {
     this.stage.tapDown(event);
-    this.onTapDown(event);
   }
 
   tapUp(ZKEvent event) {
     this.stage.tapUp(event);
-    this.onTapUp(event);
   }
-
-  onTapDown(ZKEvent event) {}
-  onTapUp(ZKEvent event) {}
 
   dispose() {
     this.destroyed = true;

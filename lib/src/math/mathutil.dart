@@ -11,7 +11,8 @@ class MathUtil {
     return val >= a && val <= b;
   }
 
-  static List<double> coordinateRotate(double angle, double x, double y, double cx, double cy) {
+  static List<double> coordinateRotate(
+      double angle, double x, double y, double cx, double cy) {
     var x1 = (x - cx) * cos(angle) - (y - cy) * sin(angle) + cx;
     var y1 = (x - cx) * sin(angle) + (y - cy) * cos(angle) + cy;
     return [x1, y1];
@@ -22,6 +23,7 @@ class MathUtil {
   }
 
   static Color getRandomColor() {
-    return Color((Random().nextDouble() * 0xFFFFFF).toInt() << 0).withOpacity(1.0);
+    return Color((Random().nextDouble() * 0xFFFFFF).toInt() << 0)
+        .withOpacity(1.0);
   }
 }

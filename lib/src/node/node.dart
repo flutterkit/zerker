@@ -83,7 +83,7 @@ class ZKNode {
   Color get color {
     return _color;
   }
-  
+
   set color(Color c) {
     _color = c;
     if (this.paint != null) this.paint.color = c;
@@ -136,21 +136,24 @@ class ZKNode {
   ////////////////////////////////////////////////////////////
   void update(int time) {
     if (this.visible == false) return;
-    this.updateTransform(position.x, position.y, scale.x, scale.y, rotation, skew.x, skew.y, regX, regY);
+    this.updateTransform(position.x, position.y, scale.x, scale.y, rotation,
+        skew.x, skew.y, regX, regY);
   }
 
-  void updateTransform(double x, double y, double scaleX, double scaleY, double rotation, double skewX, double skewY,
-      double regX, double regY) {
+  void updateTransform(double x, double y, double scaleX, double scaleY,
+      double rotation, double skewX, double skewY, double regX, double regY) {
     this.matrix.identity();
     if (this.parent != null && this.parent.type != "ZKStage") {
       this.matrix.appendMatrix(this.parent.matrix);
     }
 
-    this.matrix.appendTransform(x, y, scaleX, scaleY, rotation, skewX, skewY, regX, regY);
+    this.matrix.appendTransform(
+        x, y, scaleX, scaleY, rotation, skewX, skewY, regX, regY);
   }
 
   void draw(Canvas canvas, [Size size]) {
-    if (this.debug) canvas.drawRect(Rect.fromLTRB(0, 0, oriWidth, oriHeight), this.paint);
+    if (this.debug)
+      canvas.drawRect(Rect.fromLTRB(0, 0, oriWidth, oriHeight), this.paint);
   }
 
   void transform(Canvas canvas) {
@@ -237,8 +240,10 @@ class ZKNode {
         a12 = matrix.ty,
         id = 1 / (a00 * a11 + a01 * -a10);
 
-    var x = a11 * id * touchX + -a01 * id * touchY + (a12 * a01 - a02 * a11) * id;
-    var y = a00 * id * touchY + -a10 * id * touchX + (-a12 * a00 + a02 * a10) * id;
+    var x =
+        a11 * id * touchX + -a01 * id * touchY + (a12 * a01 - a02 * a11) * id;
+    var y =
+        a00 * id * touchY + -a10 * id * touchX + (-a12 * a00 + a02 * a10) * id;
 
     if (MathUtil.inA2B(x, 0, oriWidth) && MathUtil.inA2B(y, 0, oriHeight)) {
       return this;

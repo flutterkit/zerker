@@ -40,7 +40,10 @@ class ZKText extends ZKNode {
   }
 
   TextPainter createTextPainter() {
-    _painter = new TextPainter(text: _span, textAlign: TextAlign.center, textDirection: TextDirection.ltr);
+    _painter = new TextPainter(
+        text: _span,
+        textAlign: TextAlign.center,
+        textDirection: TextDirection.ltr);
     return _painter;
   }
 

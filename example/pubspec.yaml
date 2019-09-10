@@ -1,5 +1,5 @@
-name: zerker
-description: Zerker is a flexible and lightweight flutter canvas graphic animation library.
+name: example
+description: A new Flutter project.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -11,9 +11,7 @@ description: Zerker is a flexible and lightweight flutter canvas graphic animati
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.3.0
-author: anonymous <ajiemath@gmail.com>
-homepage: https://github.com/flutterkit/zerker
+version: 1.0.0+1
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -25,7 +23,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  uuid: 2.0.1
+  zerker: ^1.2.7
 
 dev_dependencies:
   flutter_test:
@@ -33,7 +31,7 @@ dev_dependencies:
 
 
 # For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
+# following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
@@ -44,10 +42,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-   # - example/assets/bigboy.png
-   # - example/assets/dino/dino.png
-   # - example/assets/dino/dino.json
+  assets:
+   - assets/bg.png
+   - assets/boy.png
+   - assets/boy.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

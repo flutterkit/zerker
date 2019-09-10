@@ -8,14 +8,37 @@ import "./utils/util.dart";
 import './app.dart';
 
 class Zerker extends StatelessWidget {
-  final ZKApp app;
   final String id = Util.uuid();
+  final ZKApp app;
+  final bool interactive;
+  final bool clip;
 
-  Zerker({Key key, @required this.app}) : super(key: key);
+  final double width;
+  final double height;
+
+  Zerker({
+    @required this.app,
+    Key key,
+    this.interactive,
+    this.clip,
+    this.width,
+    this.height,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (app.interactive) {
+    _ZerkerRenderObjectWidget zerkerWidget =
+        _ZerkerRenderObjectWidget(app: app, clip: clip);
+    RenderObjectWidget child;
+    if (width != null || height != null) {
+      child = ConstrainedBox(
+          constraints: BoxConstraints.tightFor(width: width, height: height),
+          child: zerkerWidget);
+    } else {
+      child = zerkerWidget;
+    }
+
+    if (interactive == true) {
       return GestureDetector(
         onTapDown: (TapDownDetails details) {
           app.tapDown(ZKEvent.fromDetails(details));
@@ -23,43 +46,47 @@ class Zerker extends StatelessWidget {
         onTapUp: (TapUpDetails details) {
           app.tapUp(ZKEvent.fromDetails(details));
         },
-        child: _ZerkerRenderObjectWidget(app: app),
+        child: child,
       );
     } else {
-      return _ZerkerRenderObjectWidget(app: app);
+      return child;
     }
   }
 }
 
 class _ZerkerRenderObjectWidget extends LeafRenderObjectWidget {
   final ZKApp app;
-  _ZerkerRenderObjectWidget({this.app});
+  final bool clip;
+
+  _ZerkerRenderObjectWidget({this.app, this.clip});
 
   @override
   RenderBox createRenderObject(BuildContext context) {
-    _ZerkerBox zerkerBox = _ZerkerBox(context, app);
+    _ZerkerBox zerkerBox = _ZerkerBox(app: app, clip: clip);
     return RenderProxyBox(zerkerBox);
   }
 
   @override
   void updateRenderObject(BuildContext context, RenderProxyBox renderProxyBox) {
-    renderProxyBox.child = _ZerkerBox(context, app);
+    renderProxyBox.child = _ZerkerBox(app: app, clip: clip);
   }
 }
 
-class _ZerkerBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>, WidgetsBindingObserver {
-  BuildContext context;
+class _ZerkerBox extends RenderBox
+    with RenderObjectWithChildMixin<RenderBox>, WidgetsBindingObserver {
   String id = Util.uuid();
   ZKApp app;
+  bool clip;
 
-  bool _inited = false;
-  Ticker _ticker;
   Canvas _canvas;
+  Ticker _ticker;
   int _oldTime = 0;
+  int _elapsed = 0;
+  bool _inited = false;
 
-  _ZerkerBox(BuildContext context, ZKApp app) {
+  _ZerkerBox({ZKApp app, bool clip = false}) {
     this.app = app;
-    this.context = context;
+    this.clip = clip;
     _addTicker();
   }
 
@@ -75,8 +102,18 @@ class _ZerkerBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>, W
       if (app.destroyed) return;
 
       _init();
-      update(duration.inMilliseconds - _oldTime);
-      markNeedsPaint();
+
+      int time = duration.inMilliseconds - _oldTime;
+      if (app.fps == 60) {
+        updateAndPaint(time);
+      } else {
+        this._elapsed += time;
+        if (this._elapsed >= app.delay) {
+          this._elapsed = 0;
+          updateAndPaint(time);
+        }
+      }
+
       _oldTime = duration.inMilliseconds;
     });
   }
@@ -101,17 +138,15 @@ class _ZerkerBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>, W
     app.dispose();
   }
 
-  void update(int time) {
+  void updateAndPaint(int time) {
     app.update(time);
-  }
-
-  @override
-  void performLayout() {
-    //performResize();
+    markNeedsPaint();
   }
 
   @override
   void performResize() {
+    super.performResize();
+
     size = constraints.biggest;
     if (app != null && !app.destroyed) {
       app.context.size = size;
@@ -130,8 +165,9 @@ class _ZerkerBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>, W
     if (app.destroyed) return;
 
     app.context.offset = offset;
-    if (app.clip == true) {
-      context.pushClipRect(needsCompositing, offset, Offset.zero & size, paintStack);
+    if (clip == true) {
+      context.pushClipRect(
+          needsCompositing, offset, Offset.zero & size, paintStack);
     } else {
       paintStack(context, offset);
     }

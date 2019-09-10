@@ -91,7 +91,7 @@ class ZKContainer extends ZKNode {
     this.renderChild(canvas);
     this.draw(canvas);
   }
-  
+
   void updateChild(int time) {
     for (var i = 0; i < this.children.length; i++) {
       var child = this.children[i];

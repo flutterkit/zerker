@@ -11,7 +11,11 @@ class ImgLoader {
   /// Load asset or network Image
   ///
   ////////////////////////////////////////////////////////////
-  static Future<ui.Image> load({String path, Function onLoad, Function onError, int timeout: 5000}) async {
+  static Future<ui.Image> load(
+      {String path,
+      Function onLoad,
+      Function onError,
+      int timeout: 5000}) async {
     ImageStream stream;
     ImageConfiguration imgConf = ImageConfiguration.empty;
     Completer<ui.Image> completer = Completer<ui.Image>();
@@ -64,7 +68,7 @@ class ImgLoader {
     var data = await rootBundle.load(path);
     var codec = await ui.instantiateImageCodec(data.buffer.asUint8List());
     var frame = await codec.getNextFrame();
-    
+
     return frame.image;
   }
 }

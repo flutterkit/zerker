@@ -19,7 +19,8 @@ class ZKContext {
 
   set size(Size s) {
     _size = s;
-    rect = Rect.fromLTWH(0, 0, _size == null ? 0 : _size.width, _size == null ? 0 : _size.height);
+    rect = Rect.fromLTWH(0, 0, _size == null ? 0 : _size.width,
+        _size == null ? 0 : _size.height);
   }
 
   double get screenWidth {

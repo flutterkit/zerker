@@ -1,7 +1,7 @@
 import '../core/constant.dart';
 import '../utils/util.dart';
 
-List defaultList = Util.specialNumberList(['0-42']);
+List defaultList = Util.convertConsecutiveList(['0-42']);
 
 class Animation {
   Function onComplete;
@@ -47,7 +47,8 @@ class Animation {
 
   int _rate = Constant.RATE;
 
-  Animation(String name, [List frames, int rate = Constant.RATE, bool loop = false]) {
+  Animation(String name,
+      [List frames, int rate = Constant.RATE, bool loop = false]) {
     this.name = name;
     this.rate = rate ?? Constant.RATE;
     this.loop = loop;
@@ -56,7 +57,7 @@ class Animation {
       this.frames = defaultList;
       this.framesType = "all";
     } else {
-      this.frames = Util.specialNumberList(frames);
+      this.frames = Util.convertConsecutiveList(frames);
       this.framesType = "auto";
     }
   }

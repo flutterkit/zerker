@@ -13,19 +13,33 @@ class ZKScene extends ZKContainer {
   ////////////////////////////////////////////////////////////
   void fadeIn([int time = 1600, Function onComplete]) {
     this.alpha = 0;
-    ZKTween(this).to({"alpha": 1}, time).easing(Ease.quart.easeOut).onComplete(onComplete).start();
+    ZKTween(this)
+        .to({"alpha": 1}, time)
+        .easing(Ease.quart.easeOut)
+        .onComplete(onComplete)
+        .start();
   }
 
   void fadeOut([int time = 1000, Function onComplete]) {
-    ZKTween(this).to({"alpha": 0}, time).easing(Ease.quart.easeIn).onComplete(onComplete).autoRemove().start();
+    ZKTween(this)
+        .to({"alpha": 0}, time)
+        .easing(Ease.quart.easeIn)
+        .onComplete(onComplete)
+        .autoRemove()
+        .start();
   }
-  
+
   ////////////////////////////////////////////////////////////
   ///
   /// Admission/appearance animation - Move in and out
   ///
   ////////////////////////////////////////////////////////////
-  void moveIn({double x, double y, int time = 1600, Function onComplete, dynamic ease}) {
+  void moveIn(
+      {double x,
+      double y,
+      int time = 1600,
+      Function onComplete,
+      dynamic ease}) {
     this.alpha = 0;
     var oldPos = this.position.clone();
     this.position.x = x ?? this.position.x;
@@ -38,7 +52,12 @@ class ZKScene extends ZKContainer {
         .start();
   }
 
-  void moveOut({double x, double y, int time = 1000, Function onComplete, dynamic ease}) {
+  void moveOut(
+      {double x,
+      double y,
+      int time = 1000,
+      Function onComplete,
+      dynamic ease}) {
     x = x ?? this.position.x;
     y = y ?? this.position.y;
 

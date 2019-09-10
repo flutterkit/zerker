@@ -29,10 +29,13 @@ class ZKStage extends ZKContainer {
       ZKNode result = child.hitTest(event.dx, event.dy);
 
       if (result != null) {
+        event.target = result;
         if (result.onTapDown != null) result.onTapDown(event);
         break;
       }
     }
+
+    if (this.onTapDown != null) this.onTapDown(event);
   }
 
   void tapUp(ZKEvent event) {
@@ -41,9 +44,12 @@ class ZKStage extends ZKContainer {
       ZKNode result = child.hitTest(event.dx, event.dy);
 
       if (result != null) {
+        event.target = result;
         if (result.onTapUp != null) result.onTapUp(event);
         break;
       }
     }
+
+    if (this.onTapUp != null) this.onTapUp(event);
   }
 }

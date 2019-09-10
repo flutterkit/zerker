@@ -38,7 +38,7 @@ class SpriteSheet extends BaseTexture {
   ////////////////////////////////////////////////////////////
   void generateFrames() {
     var w = frameSize.width;
-    var h = frameSize.width;
+    var h = frameSize.height;
 
     for (int i = 0; i < this.col; i++) {
       for (int j = 0; j < this.row; j++) {

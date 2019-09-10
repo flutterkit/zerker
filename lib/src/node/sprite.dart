@@ -15,12 +15,20 @@ class ZKSprite extends ZKImage {
   Animator animator;
   Timer _timer;
 
-  ZKSprite({String image, String key, String type, String json, double width = 100, double height = 100}) : super() {
+  ZKSprite(
+      {String image,
+      String key,
+      String type,
+      String json,
+      double width = 100,
+      double height = 100})
+      : super() {
     this.animator = new Animator();
     if (key != null) {
       this.texture = ZKAssets.getAsset(key);
       this.textureType = ZKAssets.getType(texture);
-      if (this.texture == null) throw ("Zerker:: Sorry, this Key '$key' does not get any assets!");
+      if (this.texture == null)
+        throw ("Zerker:: Sorry, this Key '$key' does not get any assets!");
 
       _timer = new Timer(Duration(milliseconds: 0), () {
         this._loadComplete(this.texture);
@@ -103,7 +111,8 @@ class ZKSprite extends ZKImage {
       frame.rotateDstRectOnce(anchor.x, anchor.y);
     }
 
-    this.updateTransform(position.x, position.y, scale.x, scale.y, angle, skew.x, skew.y, regX, regY);
+    this.updateTransform(position.x, position.y, scale.x, scale.y, angle,
+        skew.x, skew.y, regX, regY);
   }
 
   ////////////////////////////////////////////////////////////
@@ -129,7 +138,8 @@ class ZKSprite extends ZKImage {
     if (this.texture == null) return;
     if (!this.frame.isEnabled) return;
 
-    canvas.drawImageRect(this.frame.image, this.frame.srcRect, this.frame.dstRect, this.paint);
+    canvas.drawImageRect(
+        this.frame.image, this.frame.srcRect, this.frame.dstRect, this.paint);
     if (this.debug) {
       canvas.drawCircle(this.center, 5.0, this.paint);
       canvas.drawRect(this.frame.dstRect, strokePaint);
@@ -148,8 +158,10 @@ class ZKSprite extends ZKImage {
         a12 = matrix.ty,
         id = 1 / (a00 * a11 + a01 * -a10);
 
-    var x = a11 * id * touchX + -a01 * id * touchY + (a12 * a01 - a02 * a11) * id;
-    var y = a00 * id * touchY + -a10 * id * touchX + (-a12 * a00 + a02 * a10) * id;
+    var x =
+        a11 * id * touchX + -a01 * id * touchY + (a12 * a01 - a02 * a11) * id;
+    var y =
+        a00 * id * touchY + -a10 * id * touchX + (-a12 * a00 + a02 * a10) * id;
 
     if (MathUtil.inA2B(x, frame.dstRect.left, frame.dstRect.right) &&
         MathUtil.inA2B(y, frame.dstRect.top, frame.dstRect.bottom)) {

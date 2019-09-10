@@ -59,7 +59,8 @@ class ZKGraphic extends ZKNode {
   /// Various drawing related Apis
   ///
   ////////////////////////////////////////////////////////////
-  void drawArc(double x, double y, double r, double sAngle, double eAngle, [bool useCenter = true]) {
+  void drawArc(double x, double y, double r, double sAngle, double eAngle,
+      [bool useCenter = true]) {
     var rect = Rect.fromCircle(center: Offset(x, y), radius: r);
     this._addDrawList("drawArc", rect, sAngle, eAngle, useCenter);
   }
@@ -77,7 +78,8 @@ class ZKGraphic extends ZKNode {
     this._addDrawList("drawCircle", Offset(x, y), radius);
   }
 
-  void drawTriangle(double x1, double y1, double x2, double y2, double x3, double y3) {
+  void drawTriangle(
+      double x1, double y1, double x2, double y2, double x3, double y3) {
     Path path = new Path();
     path.moveTo(x1, y1);
     path.lineTo(x2, y2);
@@ -117,7 +119,8 @@ class ZKGraphic extends ZKNode {
     if (strokeJoin != null) _currentPaint.strokeJoin = strokeJoin;
     if (strokeWidth != null) _currentPaint.strokeWidth = strokeWidth;
     if (style != null) _currentPaint.style = style;
-    if (strokeMiterLimit != null) _currentPaint.strokeMiterLimit = strokeMiterLimit;
+    if (strokeMiterLimit != null)
+      _currentPaint.strokeMiterLimit = strokeMiterLimit;
   }
 
   void clear() {
@@ -156,7 +159,8 @@ class ZKGraphic extends ZKNode {
 
       case "drawArc":
         {
-          canvas.drawArc(item["parm1"], item["parm2"], item["parm3"], item["parm4"], item["paint"]);
+          canvas.drawArc(item["parm1"], item["parm2"], item["parm3"],
+              item["parm4"], item["paint"]);
         }
         break;
 
@@ -188,7 +192,12 @@ class ZKGraphic extends ZKNode {
     _currentPaint = null;
   }
 
-  void _addDrawList(String methodName, [dynamic parm1, dynamic parm2, dynamic parm3, dynamic parm4, dynamic parm5]) {
+  void _addDrawList(String methodName,
+      [dynamic parm1,
+      dynamic parm2,
+      dynamic parm3,
+      dynamic parm4,
+      dynamic parm5]) {
     var id = Util.uuid();
     this._drawList.add(id, {
       "id": id,

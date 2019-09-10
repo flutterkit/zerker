@@ -1,3 +1,20 @@
+# 1.3.0
+- fix ZKTween chain bug
+- Rewrite example
+- Optimize tap interaction events
+- Adjust multiple built-in function structures
+- Modify the ZKScrollBg class to increase the play/stop method
+- add fps Attribute
+
+## 1.2.8
+
+- fix a sprite sheet bug
+- flutter format code
+
+## 1.2.7
+
+- Add new logo
+
 ## 1.2.6
 
 - Add example

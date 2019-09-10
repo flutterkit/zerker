@@ -24,6 +24,7 @@ class ZKScrollBg extends ZKContainer {
   double _height;
   int _loadIndex = 0;
   bool _loaded = false;
+  String _status = "play";
   List<ZKImage> _bgList = [];
 
   double get overWidth {
@@ -59,6 +60,14 @@ class ZKScrollBg extends ZKContainer {
     this._createBgList(key ?? image);
   }
 
+  void play() {
+    this._status = "play";
+  }
+
+  void stop() {
+    this._status = "stop";
+  }
+
   ////////////////////////////////////////////////////////////
   ///
   /// Bg element initialization
@@ -90,17 +99,21 @@ class ZKScrollBg extends ZKContainer {
         }
 
         if (onLoad != null) onLoad();
+        this.play();
       }
     };
   }
 
   void _resetBgPosition(ZKImage bgFrag, int index) {
     if (direction == "right") {
-      bgFrag.position.x = overWidth - this._bgList.length * bgFragWidth + bgFragWidth * index;
+      bgFrag.position.x =
+          overWidth - this._bgList.length * bgFragWidth + bgFragWidth * index;
     } else if (direction == "left") {
       bgFrag.position.x = bgFragWidth * index;
     } else if (direction == "down") {
-      bgFrag.position.y = overHeight - this._bgList.length * bgFragHeight + bgFragHeight * index;
+      bgFrag.position.y = overHeight -
+          this._bgList.length * bgFragHeight +
+          bgFragHeight * index;
     } else if (direction == "up") {
       bgFrag.position.y = bgFragHeight * index;
     }
@@ -113,6 +126,7 @@ class ZKScrollBg extends ZKContainer {
   ////////////////////////////////////////////////////////////
   @override
   void update(int t) {
+    if (this._status == "stop") return;
     if (this.visible == false) return;
     if (this._loaded == false) return;
     super.update(t);
@@ -123,25 +137,29 @@ class ZKScrollBg extends ZKContainer {
       if (direction == "left") {
         bgFrag.position.x -= (t / _time) * bgFragWidth;
         if (_headBg.position.x + bgFragWidth <= 0) {
-          this._bgList.first.position.x = this._bgList.last.position.x + this._bgList.last.width;
+          this._bgList.first.position.x =
+              this._bgList.last.position.x + this._bgList.last.width;
           this._listReorder("->");
         }
       } else if (direction == "right") {
         bgFrag.position.x += (t / _time) * bgFragWidth;
         if (_headBg.position.x >= overWidth) {
-          this._bgList.last.position.x = this._bgList.first.position.x - this._bgList.first.width;
+          this._bgList.last.position.x =
+              this._bgList.first.position.x - this._bgList.first.width;
           this._listReorder("<-");
         }
       } else if (direction == "up") {
         bgFrag.position.y -= (t / _time) * bgFragHeight;
         if (_headBg.position.y + bgFragHeight <= 0) {
-          this._bgList.first.position.y = this._bgList.last.position.y + this._bgList.last.height;
+          this._bgList.first.position.y =
+              this._bgList.last.position.y + this._bgList.last.height;
           this._listReorder("->");
         }
       } else if (direction == "down") {
         bgFrag.position.y += (t / _time) * bgFragHeight;
         if (_headBg.position.y >= overHeight) {
-          this._bgList.last.position.y = this._bgList.first.position.y - this._bgList.first.height;
+          this._bgList.last.position.y =
+              this._bgList.first.position.y - this._bgList.first.height;
           this._listReorder("<-");
         }
       }

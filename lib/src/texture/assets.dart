@@ -81,7 +81,13 @@ class ZKAssets {
       return result;
     };
 
-    return await memCache.load(path: path, key: key, cache: cache, load: f, onLoad: onLoad, onError: onError);
+    return await memCache.load(
+        path: path,
+        key: key,
+        cache: cache,
+        load: f,
+        onLoad: onLoad,
+        onError: onError);
   }
 
   ////////////////////////////////////////////////////////////
@@ -90,7 +96,13 @@ class ZKAssets {
   ///
   ////////////////////////////////////////////////////////////
   static Future<Atlas> loadAltas(
-      {String json, String key, String image, String baseUrl, Function onLoad, Function onError, bool cache = true}) async {
+      {String json,
+      String key,
+      String image,
+      String baseUrl,
+      Function onLoad,
+      Function onError,
+      bool cache = true}) async {
     json = ZKAssets.getPath(json, baseUrl);
     image = ZKAssets.getPath(image, baseUrl);
 
@@ -103,7 +115,13 @@ class ZKAssets {
       return result;
     };
 
-    return await memCache.load(path: json, key: key, cache: cache, load: f, onLoad: onLoad, onError: onError);
+    return await memCache.load(
+        path: json,
+        key: key,
+        cache: cache,
+        load: f,
+        onLoad: onLoad,
+        onError: onError);
   }
 
   ////////////////////////////////////////////////////////////
@@ -131,7 +149,13 @@ class ZKAssets {
       return result;
     };
 
-    return await memCache.load(path: image, key: key, cache: cache, load: f, onLoad: onLoad, onError: onError);
+    return await memCache.load(
+        path: image,
+        key: key,
+        cache: cache,
+        load: f,
+        onLoad: onLoad,
+        onError: onError);
   }
 
   ////////////////////////////////////////////////////////////
@@ -156,7 +180,13 @@ class ZKAssets {
       return ImgTexture(img);
     };
 
-    return await memCache.load(path: href, key: key, cache: cache, load: f, onLoad: onLoad, onError: onError);
+    return await memCache.load(
+        path: href,
+        key: key,
+        cache: cache,
+        load: f,
+        onLoad: onLoad,
+        onError: onError);
   }
 
   ////////////////////////////////////////////////////////////
@@ -164,7 +194,13 @@ class ZKAssets {
   /// Loading a bunch of Assets, usually for preloading
   ///
   ////////////////////////////////////////////////////////////
-  static void preload({Map urls, String baseUrl, int parallel = 8, Function onLoad, Function onProgress, Function onError}) {
+  static void preload(
+      {Map urls,
+      String baseUrl,
+      int parallel = 8,
+      Function onLoad,
+      Function onProgress,
+      Function onError}) {
     int index = 0;
     int loadNum = 0;
     double scale = 0;
@@ -227,12 +263,21 @@ class ZKAssets {
       switch (type) {
         case "image":
           ZKAssets.loadImage(
-              key: obj["key"], path: obj["url"], baseUrl: baseUrl, onLoad: loadHandler, onError: errorHandler);
+              key: obj["key"],
+              path: obj["url"],
+              baseUrl: baseUrl,
+              onLoad: loadHandler,
+              onError: errorHandler);
           break;
 
         case "json":
           ZKAssets.loadJson(
-              key: obj["key"], path: obj["url"], baseUrl: baseUrl, onLoad: loadHandler, onError: errorHandler, parse: false);
+              key: obj["key"],
+              path: obj["url"],
+              baseUrl: baseUrl,
+              onLoad: loadHandler,
+              onError: errorHandler,
+              parse: false);
           break;
 
         case "atlas":

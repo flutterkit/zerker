@@ -95,7 +95,8 @@ class ZKImage extends ZKNode {
   @override
   void draw(Canvas canvas, [Size size]) {
     if (this.frame == null) return;
-    canvas.drawImageRect(this.frame.image, this.frame.srcRect, this.frame.dstRect, this.paint);
+    canvas.drawImageRect(
+        this.frame.image, this.frame.srcRect, this.frame.dstRect, this.paint);
 
     if (this.debug) {
       canvas.drawCircle(this.center, 5.0, this.paint);

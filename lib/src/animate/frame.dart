@@ -67,7 +67,8 @@ class Frame {
       h = c;
     }
 
-    this.dstRect = Rect.fromLTWH(l * 1.0, t * 1.0, w / Constant.ratio, h / Constant.ratio);
+    this.dstRect =
+        Rect.fromLTWH(l * 1.0, t * 1.0, w / Constant.ratio, h / Constant.ratio);
   }
 
   void rotateDstRectOnce(x, y) {
@@ -103,7 +104,8 @@ class Frame {
   void setAllRectByClip(Rect clip) {
     this.hasClip = true;
     this.srcRect = clip;
-    this.dstRect = Rect.fromLTRB(0, 0, clip.width / Constant.ratio, clip.height / Constant.ratio);
+    this.dstRect = Rect.fromLTRB(
+        0, 0, clip.width / Constant.ratio, clip.height / Constant.ratio);
   }
 
   String toString() {

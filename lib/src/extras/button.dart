@@ -26,13 +26,19 @@ class ZKButton extends ZKContainer {
 
   void _addEventListener() {
     _btn.onTapDown = (ZKEvent event) {
-      ZKTween(_btn).to({"scaleX": 1.1, "scaleY": 1.1}, 400).easing(Ease.quad.easeOut).start();
+      ZKTween(_btn)
+          .to({"scaleX": 1.1, "scaleY": 1.1}, 400)
+          .easing(Ease.quad.easeOut)
+          .start();
     };
 
     _btn.onTapUp = (ZKEvent event) {
       if (onTap != null) onTap();
       if (onTapUp != null) onTapUp(event);
-      ZKTween(_btn).to({"scaleX": 1, "scaleY": 1}, 400).easing(Ease.quad.easeIn).start();
+      ZKTween(_btn)
+          .to({"scaleX": 1, "scaleY": 1}, 400)
+          .easing(Ease.quad.easeIn)
+          .start();
     };
 
     _btn.onLoad = (dynamic path) {

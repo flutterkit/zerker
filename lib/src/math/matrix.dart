@@ -28,7 +28,13 @@ class Matrix {
   /// 	  0  0  1  ]
   ///
   /// Note the locations of b and c.
-  Matrix([double a = 1, double b = 0, double c = 0, double d = 1, double tx = 0, double ty = 0]) {
+  Matrix(
+      [double a = 1,
+      double b = 0,
+      double c = 0,
+      double d = 1,
+      double tx = 0,
+      double ty = 0]) {
     this.a = a;
     this.b = b;
     this.c = c;
@@ -37,7 +43,13 @@ class Matrix {
     this.ty = ty;
   }
 
-  Matrix append([double a = 1, double b = 0, double c = 0, double d = 1, double tx = 0, double ty = 0]) {
+  Matrix append(
+      [double a = 1,
+      double b = 0,
+      double c = 0,
+      double d = 1,
+      double tx = 0,
+      double ty = 0]) {
     var a1 = this.a;
     var b1 = this.b;
     var c1 = this.c;
@@ -55,7 +67,13 @@ class Matrix {
     return this;
   }
 
-  Matrix prepend([double a = 1, double b = 0, double c = 0, double d = 1, double tx = 0, double ty = 0]) {
+  Matrix prepend(
+      [double a = 1,
+      double b = 0,
+      double c = 0,
+      double d = 1,
+      double tx = 0,
+      double ty = 0]) {
     var a1 = this.a;
     var c1 = this.c;
     var tx1 = this.tx;
@@ -70,15 +88,17 @@ class Matrix {
   }
 
   Matrix prependMatrix(Matrix matrix) {
-    return this.prepend(matrix.a, matrix.b, matrix.c, matrix.d, matrix.tx, matrix.ty);
+    return this
+        .prepend(matrix.a, matrix.b, matrix.c, matrix.d, matrix.tx, matrix.ty);
   }
 
   Matrix appendMatrix(Matrix matrix) {
-    return this.append(matrix.a, matrix.b, matrix.c, matrix.d, matrix.tx, matrix.ty);
+    return this
+        .append(matrix.a, matrix.b, matrix.c, matrix.d, matrix.tx, matrix.ty);
   }
 
-  Matrix appendTransform(double x, double y, double scaleX, double scaleY, double rotation, double skewX, double skewY,
-      double regX, double regY) {
+  Matrix appendTransform(double x, double y, double scaleX, double scaleY,
+      double rotation, double skewX, double skewY, double regX, double regY) {
     double cosa = 0;
     double sina = 0;
 
@@ -95,9 +115,11 @@ class Matrix {
       skewX *= Constant.DEG_TO_RAD;
       skewY *= Constant.DEG_TO_RAD;
       this.append(cos(skewY), sin(skewY), -sin(skewX), cos(skewX), x, y);
-      this.append(cosa * scaleX, sina * scaleX, -sina * scaleY, cosa * scaleY, 0, 0);
+      this.append(
+          cosa * scaleX, sina * scaleX, -sina * scaleY, cosa * scaleY, 0, 0);
     } else {
-      this.append(cosa * scaleX, sina * scaleX, -sina * scaleY, cosa * scaleY, x, y);
+      this.append(
+          cosa * scaleX, sina * scaleX, -sina * scaleY, cosa * scaleY, x, y);
     }
 
     if (regX != 0 || regY != 0) {
@@ -108,8 +130,8 @@ class Matrix {
     return this;
   }
 
-  Matrix prependTransform(double x, double y, double scaleX, double scaleY, double rotation, double skewX, double skewY,
-      double regX, double regY) {
+  Matrix prependTransform(double x, double y, double scaleX, double scaleY,
+      double rotation, double skewX, double skewY, double regX, double regY) {
     double cosa = 0;
     double sina = 0;
 
@@ -129,10 +151,12 @@ class Matrix {
     if (skewX != 0 || skewY != 0) {
       skewX *= Constant.DEG_TO_RAD;
       skewY *= Constant.DEG_TO_RAD;
-      this.prepend(cosa * scaleX, sina * scaleX, -sina * scaleY, cosa * scaleY, 0, 0);
+      this.prepend(
+          cosa * scaleX, sina * scaleX, -sina * scaleY, cosa * scaleY, 0, 0);
       this.prepend(cos(skewY), sin(skewY), -sin(skewX), cos(skewX), x, y);
     } else {
-      this.prepend(cosa * scaleX, sina * scaleX, -sina * scaleY, cosa * scaleY, x, y);
+      this.prepend(
+          cosa * scaleX, sina * scaleX, -sina * scaleY, cosa * scaleY, x, y);
     }
     return this;
   }
@@ -205,7 +229,12 @@ class Matrix {
   }
 
   bool isIdentity() {
-    return this.tx == 0 && this.ty == 0 && this.a == 1 && this.b == 0 && this.c == 0 && this.d == 1;
+    return this.tx == 0 &&
+        this.ty == 0 &&
+        this.a == 1 &&
+        this.b == 0 &&
+        this.c == 0 &&
+        this.d == 1;
   }
 
   bool equals(Matrix matrix) {
@@ -224,8 +253,24 @@ class Matrix {
   /// convert matrix3x3 to matrix4x4
   Float64List toMatrix4() {
     if (this.matrix4 == null) {
-      this.matrix4 = Float64List.fromList(
-          [this.a, this.b, 0.0, 0.0, this.c, this.d, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, this.tx, this.ty, 0.0, 1.0]);
+      this.matrix4 = Float64List.fromList([
+        this.a,
+        this.b,
+        0.0,
+        0.0,
+        this.c,
+        this.d,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        this.tx,
+        this.ty,
+        0.0,
+        1.0
+      ]);
     } else {
       this.matrix4[0] = this.a;
       this.matrix4[1] = this.b;

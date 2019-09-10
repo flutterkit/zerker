@@ -64,7 +64,13 @@ class CacheMap {
   /// load any asset by Cache
   ///
   ////////////////////////////////////////////////////////////
-  dynamic load({dynamic path, String key, Function load, Function onLoad, Function onError, bool cache = true}) async {
+  dynamic load(
+      {dynamic path,
+      String key,
+      Function load,
+      Function onLoad,
+      Function onError,
+      bool cache = true}) async {
     dynamic result = this.getDataByKeyOrPath(key ?? path);
     if (cache && result != null) {
       if (onLoad != null) onLoad(result);

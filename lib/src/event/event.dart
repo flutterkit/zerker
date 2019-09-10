@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 
 class ZKEvent {
   dynamic details;
+  dynamic target;
 
   double get dx {
     return local != null ? local.dx : 0.0;

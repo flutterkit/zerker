@@ -87,10 +87,8 @@ class ZKTween {
   ZKTween(dynamic target) {
     if (target is Point) {
       _target = target;
-      _object = target.toMap();
     } else if (target is ZKNode) {
       _target = target;
-      _object = target.toMap();
     } else {
       throw new Exception('Zerker:: Input type must be Point or ZKNode!');
     }
@@ -114,8 +112,15 @@ class ZKTween {
     ZKTween.setup();
     ZKTween.add(this);
 
-    _startTime = time != null ? time : new DateTime.now().millisecondsSinceEpoch;
+    _startTime =
+        time != null ? time : new DateTime.now().millisecondsSinceEpoch;
     _startTime += _delayTime;
+
+    if (_target is Point) {
+      _object = _target.toMap();
+    } else if (_target is ZKNode) {
+      _object = _target.toMap();
+    }
 
     for (var property in _valuesEnd.keys) {
       if (_object[property] == null) continue;

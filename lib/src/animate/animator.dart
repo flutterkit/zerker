@@ -42,7 +42,8 @@ class Animator {
   ////////////////////////////////////////////////////////////
   void play(String name, [int rate, bool loop = false]) {
     Animation ani = _aniList.getItem(name);
-    if (ani == null) throw ("Zerker:: Sorry, there is no corresponding animation information.");
+    if (ani == null)
+      throw ("Zerker:: Sorry, there is no corresponding animation information.");
 
     ani.rate = rate ?? ani.rate;
     ani.loop = loop ?? ani.loop;
@@ -64,7 +65,8 @@ class Animator {
   /// Making frames
   ///
   ////////////////////////////////////////////////////////////
-  void make(String name, [List frames, int rate = Constant.RATE, bool loop = false]) {
+  void make(String name,
+      [List frames, int rate = Constant.RATE, bool loop = false]) {
     Animation ani = new Animation(name, frames, rate, loop);
     ani.framesLength = framesLength;
     ani.onComplete = onComplete;
@@ -72,7 +74,8 @@ class Animator {
     _aniList.add(name, ani);
   }
 
-  void add({String name, List frames, int rate = Constant.RATE, bool loop = false}) {
+  void add(
+      {String name, List frames, int rate = Constant.RATE, bool loop = false}) {
     return make(name, frames, rate, loop);
   }
 
