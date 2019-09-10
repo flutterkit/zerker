@@ -65,7 +65,7 @@ class MyZKApp extends ZKApp {
 
   @override
   update(int time) {
-  	super.update(time);
+    super.update(time);
     
     sprite.position.x++;
   }
