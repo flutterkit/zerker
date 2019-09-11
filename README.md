@@ -101,7 +101,7 @@ stage.addChild(_text);
 ## More cases
 You can quickly start learning an example here. [https://flutterkit.github.io/zerkerdocs/guide/tutorial.html#start-a-simple-demo](https://flutterkit.github.io/zerkerdocs/guide/tutorial.html#start-a-simple-demo)
 
-More Zerker cases you can find below [https://github.com/flutterkit](https://github.com/flutterkit).
+More zerker examples you can view here [https://github.com/flutterkit/zerker-samples](https://github.com/flutterkit/zerker-samples).
 If you have any questions about Zerker, please let me know by email, thank you very much!
 
 
