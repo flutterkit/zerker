@@ -103,10 +103,10 @@ You can quickly start learning an example here. [https://flutterkit.github.io/ze
 
 ![](https://flutterkit.github.io/zerkerdocs/images/example/example1.gif)
 
-More zerker examples you can view here [https://github.com/flutterkit/zerker-samples](https://github.com/flutterkit/zerker-samples).
+#### More zerker examples you can view here [https://github.com/flutterkit/zerker-samples](https://github.com/flutterkit/zerker-samples).
 If you have any questions about Zerker, please let me know by email, thank you very much!
 
-![](https://flutterkit.github.io/zerkerdocs/images/example/basic_demo.gif)
+![](https://flutterkit.github.io/zerkerdocs/images/example/example3.gif)
 
 
 ## License
