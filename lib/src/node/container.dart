@@ -51,7 +51,7 @@ class ZKContainer extends ZKNode {
     if (index >= 0) {
       child.parent = null;
       child.worldAlpha = child.alpha;
-      this.children.remove(index);
+      this.children.remove(child);
     }
   }
 

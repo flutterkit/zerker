@@ -102,7 +102,6 @@ class _ZerkerBox extends RenderBox
       if (app.destroyed) return;
 
       _init();
-
       int time = duration.inMilliseconds - _oldTime;
       if (app.fps == 60) {
         updateAndPaint(time);
@@ -113,7 +112,6 @@ class _ZerkerBox extends RenderBox
           updateAndPaint(time);
         }
       }
-
       _oldTime = duration.inMilliseconds;
     });
   }
@@ -121,21 +119,27 @@ class _ZerkerBox extends RenderBox
   @override
   void attach(PipelineOwner owner) {
     super.attach(owner);
-    _ticker.start();
     WidgetsBinding.instance.addObserver(this);
+
+    if (app.destroyed != true) {
+      try {
+        _ticker.start();
+      } catch (e) {}
+    }
   }
 
   @override
   void detach() {
     super.detach();
-    this.dispose();
-  }
-
-  void dispose() {
-    print('Zerker:: ZKApp $app Dispose');
-    _ticker.stop();
     WidgetsBinding.instance.removeObserver(this);
-    app.dispose();
+
+    if (app.destroyed != true) {
+      try {
+        app.dispose();
+        _ticker.stop();
+        _ticker.dispose();
+      } catch (e) {}
+    }
   }
 
   void updateAndPaint(int time) {

@@ -232,7 +232,7 @@ class ZKAssets {
 
     Function checkLoaded = () {
       scale = min(loadNum / urlsList.length, 1);
-      onProgress(scale);
+      if (onProgress != null) onProgress(scale);
 
       if (loadNum >= urlsList.length && loaded != true) {
         loaded = true;

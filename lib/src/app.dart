@@ -11,9 +11,10 @@ class ZKApp {
   String type = "ZKApp";
   String id = Util.uuid();
 
+  ZKStage stage;
+  bool debug = false;
   bool destroyed = false;
   Function onDispose;
-  ZKStage stage;
 
   double delay = 1000 / 60;
   int _fps = 60;
@@ -83,7 +84,7 @@ class ZKApp {
   ///
   ////////////////////////////////////////////////////////////
   init() {
-    print('Zerker:: $this Inited');
+    if (debug == true) print('Zerker:: Inited $this');
   }
 
   update(int time) {
@@ -112,6 +113,8 @@ class ZKApp {
   }
 
   dispose() {
+    if (debug == true) print('Zerker:: Dispose $this');
+
     this.destroyed = true;
     this.stage.dispose();
     this.stage = null;
