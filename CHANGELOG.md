@@ -1,6 +1,7 @@
 # 1.3.2
 - Fix ZKContainer removeChild bug
 - Fix Assets onProgress bug
+- Fix ZerkerWidget attach bug
 
 # 1.3.1
 - Remove uuid library dependencies
