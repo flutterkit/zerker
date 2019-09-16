@@ -66,7 +66,6 @@ class MyZKApp extends ZKApp {
   @override
   update(int time) {
     super.update(time);
-    
     sprite.position.x++;
   }
 }
@@ -77,16 +76,13 @@ class MyZKApp extends ZKApp {
 ```dart
 /// Create a zerker sprite
 ZKSprite bigboy = ZKSprite(key: "bigboy")
-	..position.x = size.width / 2
-	..position.y = size.height / 2
 	..animator.make("front", [0, 1, 2, 3, 4])
 	..animator.make("left", ['5-9'])
 	..animator.make("after", ['10-14'])
 	..animator.make("right", ['15-19'])
 	..onTapDown = (event) {
-		bigboy.animator.play("right", 8, true);
-   };
-   
+    bigboy.animator.play("right", 8, true);
+  };
 stage.addChild(bigboy);
 
 /// Create a zerker text
@@ -94,7 +90,6 @@ ZKText text = ZKText()
 	..setPosition(100, 100)
 	..text = "hello world"
 	..setStyle(color: Colors.blueGrey, backgroundColor: Colors.red[50]);
-	
 stage.addChild(_text);
 ```
 
