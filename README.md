@@ -100,11 +100,10 @@ You can quickly start learning an example here. [https://flutterkit.github.io/ze
 
 #### More zerker examples you can view here [https://github.com/flutterkit/zerker-samples](https://github.com/flutterkit/zerker-samples). If you have any questions about Zerker, please let me know by email, thank you very much!
 
-![alt-text-1](https://flutterkit.github.io/zerkerdocs/images/example/example3.gif) ![alt-text-2](https://flutterkit.github.io/zerkerdocs/images/example/example4.gif)
+![alt-text-1](https://flutterkit.github.io/zerkerdocs/images/example/example3.gif) ![alt-text-2](https://flutterkit.github.io/zerkerdocs/images/example/example4.gif){:style="margin-left: 17px;"}
 
 <div float="left" align="left">
-    <img src="https://flutterkit.github.io/zerkerdocs/images/example/example3.gif">
-    <div>  </div>
+    <img src="https://flutterkit.github.io/zerkerdocs/images/example/example3.gif"> 
     <img src="https://flutterkit.github.io/zerkerdocs/images/example/example4.gif">
 </div>
 
