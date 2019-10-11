@@ -102,5 +102,10 @@ You can quickly start learning an example here. [https://flutterkit.github.io/ze
 
 ![alt-text-1](https://flutterkit.github.io/zerkerdocs/images/example/example3.gif) ![alt-text-2](https://flutterkit.github.io/zerkerdocs/images/example/example4.gif)
 
+<div float="left" align="left">
+    <img src="https://flutterkit.github.io/zerkerdocs/images/example/example3.gif">
+    <img style="margin-left:20px;" src="https://flutterkit.github.io/zerkerdocs/images/example/example4.gif">
+</div>
+
 ## License
 Zerker is licensed under MIT license. View license. [https://github.com/flutterkit/zerker/blob/master/LICENSE](https://github.com/flutterkit/zerker/blob/master/LICENSE)
