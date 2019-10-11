@@ -100,11 +100,7 @@ You can quickly start learning an example here. [https://flutterkit.github.io/ze
 
 #### More zerker examples you can view here [https://github.com/flutterkit/zerker-samples](https://github.com/flutterkit/zerker-samples). If you have any questions about Zerker, please let me know by email, thank you very much!
 
-![alt-text-1](https://flutterkit.github.io/zerkerdocs/images/example/example3.gif) ![alt-text-2](https://flutterkit.github.io/zerkerdocs/images/example/example4.gif)
-
-             |  
-:-------------------------:|:-------------------------:
-![alt-text-1](https://flutterkit.github.io/zerkerdocs/images/example/example3.gif)  |  ![alt-text-2](https://flutterkit.github.io/zerkerdocs/images/example/example4.gif)
+![img](https://flutterkit.github.io/zerkerdocs/images/example/example3.gif) ![img]() ![img](https://flutterkit.github.io/zerkerdocs/images/example/example4.gif)
 
 ## License
 Zerker is licensed under MIT license. View license. [https://github.com/flutterkit/zerker/blob/master/LICENSE](https://github.com/flutterkit/zerker/blob/master/LICENSE)
