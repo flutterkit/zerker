@@ -104,7 +104,8 @@ You can quickly start learning an example here. [https://flutterkit.github.io/ze
 
 <div float="left" align="left">
     <img src="https://flutterkit.github.io/zerkerdocs/images/example/example3.gif">
-    <img style="margin-left:20px;" src="https://flutterkit.github.io/zerkerdocs/images/example/example4.gif">
+    <div>  </div>
+    <img src="https://flutterkit.github.io/zerkerdocs/images/example/example4.gif">
 </div>
 
 ## License
