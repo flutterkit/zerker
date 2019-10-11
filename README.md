@@ -102,6 +102,7 @@ You can quickly start learning an example here. [https://flutterkit.github.io/ze
 
 ![](https://flutterkit.github.io/zerkerdocs/images/example/example3.gif)
 
+![img](https://flutterkit.github.io/zerkerdocs/images/example/example4.gif)
 
 ## License
 Zerker is licensed under MIT license. View license. [https://github.com/flutterkit/zerker/blob/master/LICENSE](https://github.com/flutterkit/zerker/blob/master/LICENSE)
