@@ -2,9 +2,9 @@
 <br/>
 
 <div align=center>
-[![pub package](https://img.shields.io/pub/v/zerker.svg)](https://pub.dartlang.org/packages/zerker)
-[![Made-with-Flutter](https://img.shields.io/badge/Made%20with-Flutter-5fc9f8.svg)](https://flutter.dev/)
-[![Made-with-Dart](https://img.shields.io/badge/Made%20with-Dart-13589c.svg)](https://dart.dev/)
+<a href="https://pub.dartlang.org/packages/zerker" target="_blank"><img src="https://img.shields.io/pub/v/zerker.svg" alt="pub package" /></a>
+<a href="https://flutter.dev/" target="_blank"><img src="https://img.shields.io/badge/Made%20with-Flutter-5fc9f8.svg" alt="Made-with-Flutter" /></a>
+<a href="https://dart.dev/" target="_blank"><img src="https://img.shields.io/badge/Made%20with-Dart-13589c.svg" alt="Made-with-Dart" /></a>
 </div>
 
 ## What is Zerker
