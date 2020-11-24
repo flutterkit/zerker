@@ -21,3 +21,4 @@ example/.buildlog/
 example/.history
 example/.svn/
 example/pubspec.lock
+example/.vscode/launch.json
