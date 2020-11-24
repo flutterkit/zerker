@@ -1,7 +1,8 @@
 <div align=center><img src="https://flutterkit.github.io/zerkerdocs/logo/logo.png"/></div>
 
 [![pub package](https://img.shields.io/pub/v/zerker.svg)](https://pub.dartlang.org/packages/zerker)
-
+[![Made-with-Flutter](https://img.shields.io/badge/Made%20with-Flutter-5fc9f8.svg)](https://flutter.dev/)
+[![Made-with-Dart](https://img.shields.io/badge/Made%20with-Dart-13589c.svg)](https://dart.dev/)
 
 ## What is Zerker
 
