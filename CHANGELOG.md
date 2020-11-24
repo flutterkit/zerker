@@ -1,3 +1,7 @@
+# 1.3.3
+- Upgrade the latest dependency version
+- Upgrade the examples part of the code
+
 # 1.3.2
 - Fix ZKContainer removeChild bug
 - Fix Assets onProgress bug
