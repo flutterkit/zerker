@@ -1,5 +1,5 @@
-import 'dart:ui' as ui;
 import "dart:math";
+import 'dart:ui' as ui;
 import 'package:flutter/widgets.dart';
 import '../math/point.dart';
 import '../math/mathutil.dart';
