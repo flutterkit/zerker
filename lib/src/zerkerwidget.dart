@@ -159,6 +159,9 @@ class _ZerkerBox extends RenderBox
   }
 
   @override
+  Size computeDryLayout(BoxConstraints constraints) => constraints.biggest;
+
+  @override
   bool get sizedByParent => true;
 
   @override

@@ -1,3 +1,6 @@
+# 1.4.1
+- Fix the issue of flutter RenderBox was not laid out in the new version
+
 # 1.3.3
 - Upgrade the latest dependency version
 - Upgrade the examples part of the code
