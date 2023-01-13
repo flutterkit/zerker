@@ -85,6 +85,8 @@ class ZKApp {
     if (debug == true) print('Zerker:: Inited $this');
   }
 
+  mounted() {}
+
   update(int time) {
     this.stage.update(time);
   }

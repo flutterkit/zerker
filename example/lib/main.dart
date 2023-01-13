@@ -74,6 +74,11 @@ class MyZKApp extends ZKApp {
         });
   }
 
+  @override
+  mounted() {
+    //.... layouted
+  }
+
   initScene() {
     // add title
     title = ZKText()

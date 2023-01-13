@@ -75,12 +75,12 @@ class _ZerkerBox extends RenderBox
   String id = Util.uuid();
   ZKApp? app;
   bool? clip;
-
   Canvas? _canvas;
   Ticker? _ticker;
   int _oldTime = 0;
   int _elapsed = 0;
   bool _inited = false;
+  bool _mounted = false;
 
   _ZerkerBox({required ZKApp app, bool clip = false}) {
     this.app = app;
@@ -92,6 +92,13 @@ class _ZerkerBox extends RenderBox
     if (!_inited) {
       app?.init();
       _inited = true;
+    }
+  }
+
+  void _mount() {
+    if (!_mounted) {
+      app?.mounted();
+      _mounted = true;
     }
   }
 
@@ -148,12 +155,12 @@ class _ZerkerBox extends RenderBox
   @override
   void performResize() {
     super.performResize();
-
     size = constraints.biggest;
     if (app != null && !app!.destroyed) {
       app!.context!.size = size;
       app!.resize(size);
     }
+    _mount();
   }
 
   @override
