@@ -1,3 +1,7 @@
+# 2.0.1
+- Compatible with sound null safety and the latest api
+- Add the mounted method and call it after the user has laid out
+
 # 1.4.1
 - Fix the issue of flutter RenderBox was not laid out in the new version
 
