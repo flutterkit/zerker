@@ -11,11 +11,11 @@ import '../core/constant.dart';
 ///
 ////////////////////////////////////////////////////////////
 class Animator {
-  Function onComplete;
+  Function? onComplete;
   String status = "stop";
 
   ListMap _aniList = new ListMap();
-  Animation _currentAni;
+  Animation? _currentAni;
   int _framesLength = -1;
 
   bool get isEnabled {
@@ -32,7 +32,7 @@ class Animator {
   }
 
   dynamic getCurrentFrameKey() {
-    return _currentAni != null ? _currentAni.getCurrentFrameKey() : 0;
+    return _currentAni != null ? _currentAni?.getCurrentFrameKey() : 0;
   }
 
   ////////////////////////////////////////////////////////////
@@ -40,19 +40,20 @@ class Animator {
   /// Play and Stop
   ///
   ////////////////////////////////////////////////////////////
-  void play(String name, [int rate, bool loop = false]) {
-    Animation ani = _aniList.getItem(name);
-    if (ani == null)
+  void play(String name, [int? rate, bool loop = false]) {
+    Animation? ani = _aniList.getItem(name);
+    if (ani == null) {
       throw ("Zerker:: Sorry, there is no corresponding animation information.");
-
-    ani.rate = rate ?? ani.rate;
-    ani.loop = loop ?? ani.loop;
-    _currentAni = ani;
-    _currentAni.reset();
-    this.status = "play";
+    } else {
+      ani.rate = rate ?? ani.rate;
+      ani.loop = loop;
+      _currentAni = ani;
+      _currentAni?.reset();
+      this.status = "play";
+    }
   }
 
-  void stop([String name]) {
+  void stop([String? name]) {
     if (name != null) {
       this.play(name, 9999);
     }
@@ -66,7 +67,7 @@ class Animator {
   ///
   ////////////////////////////////////////////////////////////
   void make(String name,
-      [List frames, int rate = Constant.RATE, bool loop = false]) {
+      [List? frames, int rate = Constant.RATE, bool loop = false]) {
     Animation ani = new Animation(name, frames, rate, loop);
     ani.framesLength = framesLength;
     ani.onComplete = onComplete;
@@ -75,12 +76,15 @@ class Animator {
   }
 
   void add(
-      {String name, List frames, int rate = Constant.RATE, bool loop = false}) {
+      {String name = "",
+      List? frames,
+      int rate = Constant.RATE,
+      bool loop = false}) {
     return make(name, frames, rate, loop);
   }
 
   void remove(String name, [bool destroy = false]) {
-    Animation ani = _aniList.getItem(name);
+    Animation? ani = _aniList.getItem(name);
     if (ani != null && destroy) {
       ani.dispose();
     }
@@ -96,7 +100,7 @@ class Animator {
   void update(int time) {
     if (this.status == "stop") return;
 
-    _currentAni.update(time);
+    _currentAni?.update(time);
   }
 
   ////////////////////////////////////////////////////////////
@@ -110,7 +114,6 @@ class Animator {
 
   dispose() {
     this.clear();
-
     onComplete = null;
   }
 }

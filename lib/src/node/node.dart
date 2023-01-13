@@ -1,4 +1,3 @@
-import "dart:ui";
 import "dart:math";
 import 'package:flutter/material.dart';
 
@@ -10,13 +9,13 @@ import '../math/matrix.dart';
 import '../math/mathutil.dart';
 
 class ZKNode {
-  String id;
+  String id = "";
   String type = "ZKNode";
 
-  Point anchor;
-  Point position;
-  Point scale;
-  Point skew;
+  Point position = new Point(0.0, 0.0);
+  Point anchor = new Point(0.5, 0.5);
+  Point scale = new Point(1.0, 1.0);
+  Point skew = new Point(0.0, 0.0);
 
   double oriWidth = 0;
   double oriHeight = 0;
@@ -25,26 +24,26 @@ class ZKNode {
   bool interactive = true;
   double rotation = 0;
 
-  ZKNode parent;
-  Canvas canvas;
-  Paint paint;
+  ZKNode? parent;
+  Canvas? canvas;
+  Paint paint = new Paint();
 
-  ZKContext context;
+  ZKContext? context;
   dynamic expansion;
   double worldAlpha = 1;
 
-  Matrix matrix;
+  Matrix matrix = new Matrix();
   double _alpha = 1;
   bool _debug = false;
-  Color _color;
+  Color? _color;
 
   ZKNode() {
     this.id = Util.uuid();
-    this.position = new Point(0.0, 0.0);
-    this.anchor = new Point(0.5, 0.5);
-    this.scale = new Point(1.0, 1.0);
-    this.skew = new Point(0.0, 0.0);
-    this.matrix = new Matrix();
+    // this.position = new Point(0.0, 0.0);
+    // this.anchor = new Point(0.5, 0.5);
+    // this.scale = new Point(1.0, 1.0);
+    // this.skew = new Point(0.0, 0.0);
+    // this.matrix = new Matrix();
 
     this.init();
   }
@@ -54,7 +53,7 @@ class ZKNode {
   }
 
   void createPaint() {
-    this.paint = new Paint();
+    //this.paint = new Paint();
     this.paint.color = Colors.blue;
     this.paint.style = PaintingStyle.fill;
   }
@@ -80,13 +79,13 @@ class ZKNode {
     this.scale.y = h / this.oriHeight;
   }
 
-  Color get color {
+  Color? get color {
     return _color;
   }
 
-  set color(Color c) {
+  set color(Color? c) {
     _color = c;
-    if (this.paint != null) this.paint.color = c;
+    if (c != null) this.paint.color = c;
   }
 
   double get alpha {
@@ -96,8 +95,8 @@ class ZKNode {
   set alpha(double a) {
     if (a < 0) return;
     _alpha = max(0, min(a, 1));
-    if (this.parent != null && this.parent.type != "ZKStage") {
-      worldAlpha = this.parent.worldAlpha * this.alpha;
+    if (this.parent != null && this.parent?.type != "ZKStage") {
+      worldAlpha = this.parent!.worldAlpha * this.alpha;
     } else {
       worldAlpha = this.alpha;
     }
@@ -143,17 +142,18 @@ class ZKNode {
   void updateTransform(double x, double y, double scaleX, double scaleY,
       double rotation, double skewX, double skewY, double regX, double regY) {
     this.matrix.identity();
-    if (this.parent != null && this.parent.type != "ZKStage") {
-      this.matrix.appendMatrix(this.parent.matrix);
+    if (this.parent != null && this.parent?.type != "ZKStage") {
+      this.matrix.appendMatrix(this.parent!.matrix);
     }
 
     this.matrix.appendTransform(
         x, y, scaleX, scaleY, rotation, skewX, skewY, regX, regY);
   }
 
-  void draw(Canvas canvas, [Size size]) {
-    if (this.debug)
-      canvas.drawRect(Rect.fromLTRB(0, 0, oriWidth, oriHeight), this.paint);
+  void draw(Canvas canvas, [Size? size]) {
+    if (this.debug) {
+      canvas.drawRect(Rect.fromLTRB(0, 0, oriWidth, oriHeight), paint);
+    }
   }
 
   void transform(Canvas canvas) {
@@ -191,11 +191,7 @@ class ZKNode {
   }
 
   void _setPaintAlpha(double a) {
-    if (this.paint.color != null) {
-      this.paint.color = this.paint.color.withOpacity(a);
-    } else {
-      this.paint.color = Colors.white.withOpacity(a);
-    }
+    this.paint.color = this.paint.color.withOpacity(a);
   }
 
   void dispose() {
@@ -221,15 +217,15 @@ class ZKNode {
   /// Interaction-related functions
   ///
   ////////////////////////////////////////////////////////////
-  Function(ZKEvent event) onTapDown;
-  Function(ZKEvent event) onTapUp;
-  Function(ZKEvent event) onTouchMove;
+  Function(ZKEvent event)? onTapDown;
+  Function(ZKEvent event)? onTapUp;
+  Function(ZKEvent event)? onTouchMove;
 
   bool get canInteractive {
     return this.interactive == true && this.alpha != 0 && this.visible == true;
   }
 
-  ZKNode hitTest(touchX, touchY) {
+  ZKNode? hitTest(touchX, touchY) {
     if (this.canInteractive == false) return null;
 
     var a00 = matrix.a,

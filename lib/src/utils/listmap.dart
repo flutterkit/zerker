@@ -7,10 +7,10 @@ import 'dart:collection';
 ///
 ////////////////////////////////////////////////////////////
 class ListMap {
-  LinkedHashMap<String, dynamic> _map;
+  LinkedHashMap<String, dynamic> _map = new LinkedHashMap();
 
   ListMap() {
-    this._map = new LinkedHashMap();
+    //this._map = new LinkedHashMap();
   }
 
   void add(String id, dynamic item) {
@@ -34,7 +34,7 @@ class ListMap {
     return this;
   }
 
-  ListMap clear([Function clearFunc]) {
+  ListMap clear([Function? clearFunc]) {
     for (var id in this._map.keys) {
       var item = this._map[id];
       if (clearFunc != null) clearFunc(item);

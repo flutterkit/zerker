@@ -1,7 +1,6 @@
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter/gestures.dart';
 
 import './event/event.dart';
 import "./utils/util.dart";
@@ -10,15 +9,14 @@ import './app.dart';
 class Zerker extends StatelessWidget {
   final String id = Util.uuid();
   final ZKApp app;
-  final bool interactive;
-  final bool clip;
-
-  final double width;
-  final double height;
+  final bool? interactive;
+  final bool? clip;
+  final double? width;
+  final double? height;
 
   Zerker({
-    @required this.app,
-    Key key,
+    required this.app,
+    Key? key,
     this.interactive,
     this.clip,
     this.width,
@@ -55,36 +53,36 @@ class Zerker extends StatelessWidget {
 }
 
 class _ZerkerRenderObjectWidget extends LeafRenderObjectWidget {
-  final ZKApp app;
-  final bool clip;
+  final ZKApp? app;
+  final bool? clip;
 
   _ZerkerRenderObjectWidget({this.app, this.clip});
 
   @override
   RenderBox createRenderObject(BuildContext context) {
-    _ZerkerBox zerkerBox = _ZerkerBox(app: app, clip: clip);
+    _ZerkerBox zerkerBox = _ZerkerBox(app: app!, clip: clip ?? false);
     return RenderProxyBox(zerkerBox);
   }
 
   @override
   void updateRenderObject(BuildContext context, RenderProxyBox renderProxyBox) {
-    renderProxyBox.child = _ZerkerBox(app: app, clip: clip);
+    renderProxyBox.child = _ZerkerBox(app: app!, clip: clip ?? false);
   }
 }
 
 class _ZerkerBox extends RenderBox
     with RenderObjectWithChildMixin<RenderBox>, WidgetsBindingObserver {
   String id = Util.uuid();
-  ZKApp app;
-  bool clip;
+  ZKApp? app;
+  bool? clip;
 
-  Canvas _canvas;
-  Ticker _ticker;
+  Canvas? _canvas;
+  Ticker? _ticker;
   int _oldTime = 0;
   int _elapsed = 0;
   bool _inited = false;
 
-  _ZerkerBox({ZKApp app, bool clip = false}) {
+  _ZerkerBox({required ZKApp app, bool clip = false}) {
     this.app = app;
     this.clip = clip;
     _addTicker();
@@ -92,22 +90,22 @@ class _ZerkerBox extends RenderBox
 
   void _init() {
     if (!_inited) {
-      app.init();
+      app?.init();
       _inited = true;
     }
   }
 
   void _addTicker() {
     _ticker = new Ticker((Duration duration) {
-      if (app.destroyed) return;
+      if (app!.destroyed) return;
 
       _init();
       int time = duration.inMilliseconds - _oldTime;
-      if (app.fps == 60) {
+      if (app!.fps == 60) {
         updateAndPaint(time);
       } else {
         this._elapsed += time;
-        if (this._elapsed >= app.delay) {
+        if (this._elapsed >= app!.delay) {
           this._elapsed = 0;
           updateAndPaint(time);
         }
@@ -121,9 +119,9 @@ class _ZerkerBox extends RenderBox
     super.attach(owner);
     WidgetsBinding.instance.addObserver(this);
 
-    if (app.destroyed != true) {
+    if (app!.destroyed != true) {
       try {
-        _ticker.start();
+        _ticker?.start();
       } catch (e) {}
     }
   }
@@ -133,17 +131,17 @@ class _ZerkerBox extends RenderBox
     super.detach();
     WidgetsBinding.instance.removeObserver(this);
 
-    if (app.destroyed != true) {
+    if (app!.destroyed != true) {
       try {
-        app.dispose();
-        _ticker.stop();
-        _ticker.dispose();
+        app!.dispose();
+        _ticker?.stop();
+        _ticker?.dispose();
       } catch (e) {}
     }
   }
 
   void updateAndPaint(int time) {
-    app.update(time);
+    app!.update(time);
     markNeedsPaint();
   }
 
@@ -152,9 +150,9 @@ class _ZerkerBox extends RenderBox
     super.performResize();
 
     size = constraints.biggest;
-    if (app != null && !app.destroyed) {
-      app.context.size = size;
-      app.resize(size);
+    if (app != null && !app!.destroyed) {
+      app!.context!.size = size;
+      app!.resize(size);
     }
   }
 
@@ -169,9 +167,9 @@ class _ZerkerBox extends RenderBox
 
   @override
   void paint(PaintingContext context, Offset offset) {
-    if (app.destroyed) return;
+    if (app!.destroyed) return;
 
-    app.context.offset = offset;
+    app!.context!.offset = offset;
     if (clip == true) {
       context.pushClipRect(
           needsCompositing, offset, Offset.zero & size, paintStack);
@@ -181,15 +179,15 @@ class _ZerkerBox extends RenderBox
   }
 
   @protected
-  void paintStack(PaintingContext context, Offset offset) {
+  void paintStack(PaintingContext context, Offset? offset) {
     _canvas = context.canvas;
-    _resetCanvas(_canvas);
-    if (offset != null) _canvas.translate(offset.dx, offset.dy);
+    _resetCanvas(_canvas!);
+    if (offset != null) _canvas!.translate(offset.dx, offset.dy);
 
-    _canvas.save();
-    app.render(_canvas);
-    app.customDraw(_canvas);
-    _canvas.restore();
+    _canvas?.save();
+    app!.render(_canvas!);
+    app!.customDraw(_canvas!);
+    _canvas?.restore();
   }
 
   void _resetCanvas(Canvas canvas) {}

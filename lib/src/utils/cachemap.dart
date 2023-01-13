@@ -19,8 +19,8 @@ class CacheMap {
     map[key] = val;
   }
 
-  void setData({String key, dynamic data, String path}) {
-    var id = key ?? path;
+  void setData({String? key, dynamic data, String? path}) {
+    String id = key ?? path ?? '';
     map[id] = {
       "key": key,
       "path": path,
@@ -41,12 +41,12 @@ class CacheMap {
     return obj != null ? obj["data"] : null;
   }
 
-  dynamic getByKey(String key) {
+  dynamic getByKey(String? key) {
     if (key == null) return null;
     return map[key];
   }
 
-  dynamic getByPath(String path) {
+  dynamic getByPath(String? path) {
     if (path == null) return null;
 
     for (var key in map.keys) {
@@ -66,10 +66,10 @@ class CacheMap {
   ////////////////////////////////////////////////////////////
   dynamic load(
       {dynamic path,
-      String key,
-      Function load,
-      Function onLoad,
-      Function onError,
+      String? key,
+      Function? load,
+      Function? onLoad,
+      Function? onError,
       bool cache = true}) async {
     dynamic result = this.getDataByKeyOrPath(key ?? path);
     if (cache && result != null) {
@@ -79,7 +79,7 @@ class CacheMap {
 
     try {
       if (path != null && path is String) {
-        var data = await load(path);
+        var data = await load!(path);
         if (cache) this.setData(key: key, path: path, data: data);
         if (onLoad != null) onLoad(data);
 

@@ -17,7 +17,7 @@ class ZKAssets {
   static CacheMap memCache = CacheMap();
   static String baseUrl = "";
 
-  static String getPath(String path, [String baseUrl]) {
+  static String? getPath(String? path, [String? baseUrl]) {
     if (path == null) return null;
     return baseUrl != null ? baseUrl + path : ZKAssets.baseUrl + path;
   }
@@ -30,7 +30,7 @@ class ZKAssets {
     return memCache.clear();
   }
 
-  static String getType(dynamic texture) {
+  static String? getType(dynamic texture) {
     if (texture is ui.Image) {
       return "image";
     } else if (texture is Atlas) {
@@ -50,26 +50,26 @@ class ZKAssets {
   ///
   ////////////////////////////////////////////////////////////
   static Future<ByteData> loadByte(String path) async {
-    path = ZKAssets.getPath(path);
+    path = ZKAssets.getPath(path) ?? "";
     return await rootBundle.load(path);
   }
 
   static Future<String> loadString(String path) async {
-    path = ZKAssets.getPath(path);
+    path = ZKAssets.getPath(path) ?? "";
     return await rootBundle.loadString(path);
   }
 
   static Future<ui.Image> loadAssetImage(String path) async {
-    path = ZKAssets.getPath(path);
+    path = ZKAssets.getPath(path) ?? "";
     return await ImgLoader.loadFromAsset(path);
   }
 
   static Future<Map<String, dynamic>> loadJson(
-      {String path,
-      String key,
-      String baseUrl,
-      Function onLoad,
-      Function onError,
+      {String? path,
+      String? key,
+      String? baseUrl,
+      Function? onLoad,
+      Function? onError,
       bool parse = true,
       bool cache = true}) async {
     path = ZKAssets.getPath(path, baseUrl);
@@ -96,12 +96,12 @@ class ZKAssets {
   ///
   ////////////////////////////////////////////////////////////
   static Future<Atlas> loadAltas(
-      {String json,
-      String key,
-      String image,
-      String baseUrl,
-      Function onLoad,
-      Function onError,
+      {String? json,
+      String? key,
+      String? image,
+      String? baseUrl,
+      Function? onLoad,
+      Function? onError,
       bool cache = true}) async {
     json = ZKAssets.getPath(json, baseUrl);
     image = ZKAssets.getPath(image, baseUrl);
@@ -130,21 +130,21 @@ class ZKAssets {
   ///
   ////////////////////////////////////////////////////////////
   static Future<SpriteSheet> loadSpriteSheet(
-      {String key,
-      Size size,
+      {String? key,
+      Size? size,
       dynamic width,
       dynamic height,
-      String image,
-      String baseUrl,
-      Function onLoad,
-      Function onError,
+      String? image,
+      String? baseUrl,
+      Function? onLoad,
+      Function? onError,
       bool cache = true}) async {
     image = ZKAssets.getPath(image, baseUrl);
 
     var f = (path) async {
-      ui.Image img = await ZKAssets.loadAssetImage(image);
+      ui.Image img = await ZKAssets.loadAssetImage(image!);
       size = size ?? Size(width, height);
-      var result = SpriteSheet(img, size);
+      var result = SpriteSheet(img, size!);
 
       return result;
     };
@@ -167,10 +167,10 @@ class ZKAssets {
       {dynamic path,
       dynamic image,
       dynamic url,
-      String baseUrl,
-      String key,
-      Function onLoad,
-      Function onError,
+      String? baseUrl,
+      String? key,
+      Function? onLoad,
+      Function? onError,
       bool cache = true}) async {
     var href = path ?? image ?? url;
     href = ZKAssets.getPath(href, baseUrl);
@@ -195,21 +195,21 @@ class ZKAssets {
   ///
   ////////////////////////////////////////////////////////////
   static void preload(
-      {Map urls,
-      String baseUrl,
+      {Map? urls,
+      String? baseUrl,
       int parallel = 8,
-      Function onLoad,
-      Function onProgress,
-      Function onError}) {
+      Function? onLoad,
+      Function? onProgress,
+      Function? onError}) {
     int index = 0;
     int loadNum = 0;
     double scale = 0;
     List urlsList = [];
     bool loaded = false;
-    Function singleLoad;
+    Function? singleLoad;
 
     Function convertToList = () {
-      urls.forEach((key, url) {
+      urls?.forEach((key, url) {
         Map obj = {};
         obj["key"] = key;
         if (url is String) {
@@ -243,14 +243,14 @@ class ZKAssets {
     Function errorHandler = ([err]) {
       loadNum++;
       checkLoaded();
-      singleLoad();
+      singleLoad!();
       if (onError != null) onError();
     };
 
     Function loadHandler = ([result]) {
       loadNum++;
       checkLoaded();
-      singleLoad();
+      singleLoad!();
     };
 
     singleLoad = () {

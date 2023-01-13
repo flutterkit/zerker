@@ -4,17 +4,17 @@ import '../utils/util.dart';
 List defaultList = Util.convertConsecutiveList(['0-42']);
 
 class Animation {
-  Function onComplete;
+  Function? onComplete;
 
-  String name;
-  String framesType;
+  String name = '';
+  String framesType = '';
   bool loop = false;
 
   int index = 0;
   int elapsed = 0;
   double delay = 0;
 
-  List _frames;
+  List _frames = [];
 
   ////////////////////////////////////////////////////////////
   ///
@@ -48,9 +48,9 @@ class Animation {
   int _rate = Constant.RATE;
 
   Animation(String name,
-      [List frames, int rate = Constant.RATE, bool loop = false]) {
+      [List? frames, int rate = Constant.RATE, bool loop = false]) {
     this.name = name;
-    this.rate = rate ?? Constant.RATE;
+    this.rate = rate;
     this.loop = loop;
 
     if (frames == null) {
@@ -63,12 +63,12 @@ class Animation {
   }
 
   dynamic getCurrentFrameKey() {
-    if (this.frames == null) return 0;
+    if (this.frames.length == 0) return 0;
     return this.frames[this.index];
   }
 
   void update(int seconds) {
-    if (this.frames == null) return;
+    if (this.frames.length == 0) return;
 
     this.elapsed += seconds;
     if (this.elapsed >= this.delay) {
@@ -84,7 +84,7 @@ class Animation {
       }
 
       if (this.loop != true && onComplete != null) {
-        onComplete();
+        onComplete!();
       }
     }
   }
@@ -95,14 +95,9 @@ class Animation {
   }
 
   void dispose() {
-    this.name = null;
     this.onComplete = null;
     this.elapsed = 0;
     this.index = 0;
-
-    if (this.frames != null) {
-      this.frames.clear();
-      this.frames = null;
-    }
+    this.frames.clear();
   }
 }

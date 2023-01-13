@@ -12,9 +12,9 @@ class ImgLoader {
   ///
   ////////////////////////////////////////////////////////////
   static Future<ui.Image> load(
-      {String path,
-      Function onLoad,
-      Function onError,
+      {String path = "",
+      Function? onLoad,
+      Function? onError,
       int timeout: 5000}) async {
     ImageStream stream;
     ImageConfiguration imgConf = ImageConfiguration.empty;
@@ -27,13 +27,13 @@ class ImgLoader {
     }
 
     /// Image Listener ----------------------------------------
-    Timer timer;
-    ImageStreamListener listener;
+    Timer? timer;
+    ImageStreamListener? listener;
 
     // remove listener
     var removeListener = () {
-      stream.removeListener(listener);
-      timer.cancel();
+      stream.removeListener(listener!);
+      timer?.cancel();
     };
 
     var onLoadHandler = (ImageInfo info, bool _) async {
@@ -41,7 +41,7 @@ class ImgLoader {
       removeListener();
       if (onLoad != null) onLoad(path);
     };
-    var onErrorHandler = (dynamic exception, StackTrace stackTrace) {
+    var onErrorHandler = (dynamic exception, StackTrace? stackTrace) {
       completer.completeError(exception, stackTrace);
       removeListener();
       if (onError != null) onError(exception);

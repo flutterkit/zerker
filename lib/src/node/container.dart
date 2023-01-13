@@ -4,14 +4,12 @@ import './node.dart';
 import "../core/context.dart";
 
 class ZKContainer extends ZKNode {
-  List<ZKNode> children;
+  List<ZKNode> children = [];
 
   @override
   String type = "ZKContainer";
 
-  ZKContainer() : super() {
-    this.children = [];
-  }
+  ZKContainer() : super();
 
   @override
   set alpha(double a) {
@@ -25,7 +23,7 @@ class ZKContainer extends ZKNode {
   }
 
   @override
-  set context(ZKContext c) {
+  set context(ZKContext? c) {
     super.context = c;
     for (int i = 0; i < this.children.length; i++) {
       ZKNode child = this.children[i];
@@ -66,7 +64,6 @@ class ZKContainer extends ZKNode {
     index = max(index, 0);
 
     if (child.parent != null) (child.parent as ZKContainer).removeChild(child);
-
     child.parent = this;
     this.children.insert(index, child);
   }
@@ -79,7 +76,6 @@ class ZKContainer extends ZKNode {
   @override
   void update(int time) {
     if (this.visible == false) return;
-
     super.update(time);
     this.updateChild(time);
   }
@@ -112,12 +108,12 @@ class ZKContainer extends ZKNode {
   ///
   ////////////////////////////////////////////////////////////
   @override
-  ZKNode hitTest(touchX, touchY) {
+  ZKNode? hitTest(touchX, touchY) {
     if (this.canInteractive == false) return null;
 
     for (int i = this.children.length - 1; i >= 0; i--) {
       ZKNode child = this.children[i];
-      ZKNode result = child.hitTest(touchX, touchY);
+      ZKNode? result = child.hitTest(touchX, touchY);
       if (result != null) return result;
     }
     return null;

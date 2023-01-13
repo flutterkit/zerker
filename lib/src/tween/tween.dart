@@ -69,20 +69,20 @@ class ZKTween {
   ///
   ///////////////////////////////////////////////////////////////////////////
   dynamic _target;
-  Map<String, dynamic> _object;
-  Map<String, dynamic> _valuesStart;
-  Map<String, dynamic> _valuesEnd;
+  Map<String, dynamic> _object = {};
+  Map<String, dynamic> _valuesStart = {};
+  Map<String, dynamic> _valuesEnd = {};
 
-  int _duration;
-  int _delayTime;
-  int _startTime;
+  int _duration = 0;
+  int _delayTime = 0;
+  int _startTime = 0;
 
   bool _autoRemove = false;
-  ZKTween _chainedTween;
+  ZKTween? _chainedTween;
 
-  Function _easingFunction;
-  Function(dynamic obj) _onUpdateCallback;
-  Function(dynamic obj) _onCompleteCallback;
+  Function _easingFunction = Ease.linear.none;
+  Function(dynamic obj)? _onUpdateCallback;
+  Function(dynamic obj)? _onCompleteCallback;
 
   ZKTween(dynamic target) {
     if (target is Point) {
@@ -98,7 +98,6 @@ class ZKTween {
 
     _duration = 1000;
     _delayTime = 0;
-
     _easingFunction = Ease.linear.none;
   }
 
@@ -150,12 +149,14 @@ class ZKTween {
     return this;
   }
 
-  ZKTween onUpdate(Function onUpdateCallback) {
+  ZKTween onUpdate(Function(dynamic obj)? onUpdateCallback) {
+    if (onUpdateCallback == null) return this;
     _onUpdateCallback = onUpdateCallback;
     return this;
   }
 
-  ZKTween onComplete(Function onCompleteCallback) {
+  ZKTween onComplete(Function(dynamic obj)? onCompleteCallback) {
+    if (onCompleteCallback == null) return this;
     _onCompleteCallback = onCompleteCallback;
     return this;
   }
@@ -204,13 +205,13 @@ class ZKTween {
     }
 
     if (_onUpdateCallback != null) {
-      _onUpdateCallback(_object);
+      _onUpdateCallback!(_object);
     }
   }
 
   void _completeNode() {
     if (_onCompleteCallback != null) {
-      _onCompleteCallback(_object);
+      _onCompleteCallback!(_object);
     }
 
     if (_autoRemove && _target is ZKNode) {
@@ -218,7 +219,7 @@ class ZKTween {
     }
 
     if (_chainedTween != null) {
-      _chainedTween.start();
+      _chainedTween!.start();
     } else {
       // _target = null;
     }

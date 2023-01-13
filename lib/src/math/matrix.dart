@@ -18,7 +18,7 @@ class Matrix {
   double tx = 0;
   double ty = 0;
 
-  Float64List matrix4;
+  Float64List? matrix4;
 
   /// Represents an affine transformation matrix, and provides tools for constructing and concatenating matrices.
   /// This matrix can be visualized as:
@@ -272,25 +272,25 @@ class Matrix {
         1.0
       ]);
     } else {
-      this.matrix4[0] = this.a;
-      this.matrix4[1] = this.b;
-      this.matrix4[2] = 0.0;
-      this.matrix4[3] = 0.0;
-      this.matrix4[4] = this.c;
-      this.matrix4[5] = this.d;
-      this.matrix4[6] = 0.0;
-      this.matrix4[7] = 0.0;
-      this.matrix4[8] = 0.0;
-      this.matrix4[9] = 0.0;
-      this.matrix4[10] = 1.0;
-      this.matrix4[11] = 0.0;
-      this.matrix4[12] = this.tx;
-      this.matrix4[13] = this.ty;
-      this.matrix4[14] = 0.0;
-      this.matrix4[15] = 1.0;
+      this.matrix4?[0] = this.a;
+      this.matrix4?[1] = this.b;
+      this.matrix4?[2] = 0.0;
+      this.matrix4?[3] = 0.0;
+      this.matrix4?[4] = this.c;
+      this.matrix4?[5] = this.d;
+      this.matrix4?[6] = 0.0;
+      this.matrix4?[7] = 0.0;
+      this.matrix4?[8] = 0.0;
+      this.matrix4?[9] = 0.0;
+      this.matrix4?[10] = 1.0;
+      this.matrix4?[11] = 0.0;
+      this.matrix4?[12] = this.tx;
+      this.matrix4?[13] = this.ty;
+      this.matrix4?[14] = 0.0;
+      this.matrix4?[15] = 1.0;
     }
 
-    return this.matrix4;
+    return this.matrix4!;
   }
 
   String toString() {

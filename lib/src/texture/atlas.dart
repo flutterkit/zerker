@@ -4,25 +4,23 @@ import "../utils/util.dart";
 import "../animate/frame.dart";
 
 class Atlas extends BaseTexture {
-  Map<String, dynamic> data;
-  String imageUrl;
-
+  Map<String, dynamic>? data;
+  String imageUrl = "";
   String type = "atlas";
 
-  Atlas(Map<String, dynamic> json, [Image image]) {
+  Atlas(Map<String, dynamic>? json, [Image? image]) {
     this.data = json ?? {};
-    this.imageUrl = imageUrl ?? getFromMeta("image");
+    this.imageUrl = getFromMeta("image");
     this.image = image;
-
     this.generateFrames();
   }
 
-  Map<String, dynamic> get meta {
-    return this.data["meta"];
+  Map<String, dynamic>? get meta {
+    return this.data?["meta"];
   }
 
   dynamic get frames {
-    return this.data["frames"] ?? [];
+    return this.data?["frames"] ?? [];
   }
 
   ////////////////////////////////////////////////////////////
@@ -38,13 +36,13 @@ class Atlas extends BaseTexture {
     return getFromMeta("scale", 1);
   }
 
-  Size get size {
+  Size? get size {
     var size = getFromMeta("size");
     return size == null ? null : Size(size["w"], size["h"]);
   }
 
   dynamic getFromMeta(String key, [dynamic defaultVal]) {
-    return meta != null ? meta[key] : (defaultVal ?? null);
+    return meta != null ? meta![key] : (defaultVal ?? null);
   }
 
   ////////////////////////////////////////////////////////////
@@ -60,7 +58,7 @@ class Atlas extends BaseTexture {
     return frames is List ? "array" : "json";
   }
 
-  Frame getFrame(dynamic key) {
+  Frame? getFrame(dynamic key) {
     if (key is int) {
       return Util.getListVal(list, key);
     } else {
@@ -85,7 +83,7 @@ class Atlas extends BaseTexture {
       var py = Util.getByPath(obj, "pivot.y");
 
       Frame frame = new Frame(this.type);
-      frame.image = image;
+      frame.image = image!;
       frame.name = Util.getByPath(obj, "filename");
       frame.rotated = Util.getByPath(obj, "rotated");
       frame.trimmed = Util.getByPath(obj, "trimmed");

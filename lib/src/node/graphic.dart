@@ -7,8 +7,8 @@ import "../utils/util.dart";
 import "../utils/listmap.dart";
 
 class ZKGraphic extends ZKNode {
-  Paint _currentPaint;
-  ListMap _drawList;
+  Paint? _currentPaint;
+  ListMap _drawList = new ListMap();
   double _alpha = 1;
 
   @override
@@ -18,7 +18,7 @@ class ZKGraphic extends ZKNode {
   String type = "ZKGraphic";
 
   ZKGraphic() : super() {
-    this._drawList = new ListMap();
+    //this._drawList = new ListMap();
     this.anchor.set(0.0, 0.0);
   }
 
@@ -42,11 +42,11 @@ class ZKGraphic extends ZKNode {
     _alpha = max(0, min(a, 1));
     this._drawList.forEach((item, id) {
       Paint paint = item["paint"];
-      if (paint.color != null) {
-        paint.color = paint.color.withOpacity(_alpha);
-      } else {
-        paint.color = Colors.white.withOpacity(_alpha);
-      }
+      paint.color = paint.color.withOpacity(_alpha);
+      // if (paint.color != null) {
+      // } else {
+      //   paint.color = Colors.white.withOpacity(_alpha);
+      // }
     });
   }
 
@@ -97,30 +97,30 @@ class ZKGraphic extends ZKNode {
   ///
   ////////////////////////////////////////////////////////////
   void setStyle(
-      {BlendMode blendMode,
-      Color color,
-      ColorFilter colorFilter,
-      FilterQuality filterQuality,
-      bool invertColors,
-      bool isAntiAlias,
-      StrokeCap strokeCap,
-      StrokeJoin strokeJoin,
-      double strokeMiterLimit,
-      double strokeWidth,
-      PaintingStyle style}) {
+      {BlendMode? blendMode,
+      Color? color,
+      ColorFilter? colorFilter,
+      FilterQuality? filterQuality,
+      bool? invertColors,
+      bool? isAntiAlias,
+      StrokeCap? strokeCap,
+      StrokeJoin? strokeJoin,
+      double? strokeMiterLimit,
+      double? strokeWidth,
+      PaintingStyle? style}) {
     _currentPaint = Paint();
-    if (color != null) _currentPaint.color = color;
-    if (blendMode != null) _currentPaint.blendMode = blendMode;
-    if (colorFilter != null) _currentPaint.colorFilter = colorFilter;
-    if (filterQuality != null) _currentPaint.filterQuality = filterQuality;
-    if (invertColors != null) _currentPaint.invertColors = invertColors;
-    if (isAntiAlias != null) _currentPaint.isAntiAlias = isAntiAlias;
-    if (strokeCap != null) _currentPaint.strokeCap = strokeCap;
-    if (strokeJoin != null) _currentPaint.strokeJoin = strokeJoin;
-    if (strokeWidth != null) _currentPaint.strokeWidth = strokeWidth;
-    if (style != null) _currentPaint.style = style;
+    if (color != null) _currentPaint?.color = color;
+    if (blendMode != null) _currentPaint?.blendMode = blendMode;
+    if (colorFilter != null) _currentPaint?.colorFilter = colorFilter;
+    if (filterQuality != null) _currentPaint?.filterQuality = filterQuality;
+    if (invertColors != null) _currentPaint?.invertColors = invertColors;
+    if (isAntiAlias != null) _currentPaint?.isAntiAlias = isAntiAlias;
+    if (strokeCap != null) _currentPaint?.strokeCap = strokeCap;
+    if (strokeJoin != null) _currentPaint?.strokeJoin = strokeJoin;
+    if (strokeWidth != null) _currentPaint?.strokeWidth = strokeWidth;
+    if (style != null) _currentPaint?.style = style;
     if (strokeMiterLimit != null)
-      _currentPaint.strokeMiterLimit = strokeMiterLimit;
+      _currentPaint?.strokeMiterLimit = strokeMiterLimit;
   }
 
   void clear() {
@@ -133,7 +133,7 @@ class ZKGraphic extends ZKNode {
   ///
   ////////////////////////////////////////////////////////////
   @override
-  draw(Canvas canvas, [Size size]) {
+  draw(Canvas canvas, [Size? size]) {
     this._drawList.forEach(drawShape);
   }
 
@@ -141,38 +141,38 @@ class ZKGraphic extends ZKNode {
     switch (item["methodName"]) {
       case "drawRect":
         {
-          canvas.drawRect(item["parm1"], item["paint"]);
+          canvas?.drawRect(item["parm1"], item["paint"]);
         }
         break;
 
       case "drawCircle":
         {
-          canvas.drawCircle(item["parm1"], item["parm2"], item["paint"]);
+          canvas?.drawCircle(item["parm1"], item["parm2"], item["paint"]);
         }
         break;
 
       case "drawOval":
         {
-          canvas.drawOval(item["parm1"], item["paint"]);
+          canvas?.drawOval(item["parm1"], item["paint"]);
         }
         break;
 
       case "drawArc":
         {
-          canvas.drawArc(item["parm1"], item["parm2"], item["parm3"],
+          canvas?.drawArc(item["parm1"], item["parm2"], item["parm3"],
               item["parm4"], item["paint"]);
         }
         break;
 
       case "drawTriangle":
         {
-          canvas.drawPath(item["parm1"], item["paint"]);
+          canvas?.drawPath(item["parm1"], item["paint"]);
         }
         break;
 
       case "drawLine":
         {
-          canvas.drawLine(item["parm1"], item["parm2"], item["paint"]);
+          canvas?.drawLine(item["parm1"], item["parm2"], item["paint"]);
         }
         break;
 

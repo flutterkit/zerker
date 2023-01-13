@@ -1,37 +1,36 @@
 import "dart:ui";
-import "dart:math";
 import '../math/point.dart';
 import '../math/mathutil.dart';
 import '../core/constant.dart';
 
 class Frame {
-  Image image;
-  String type;
-  String name;
+  Image? image;
+  String type = "";
+  String name = "";
 
-  Rect srcRect;
-  Rect dstRect;
-  bool trimmed;
-  bool hasClip;
-  Point anchor;
+  Rect? srcRect;
+  Rect? dstRect;
+  bool trimmed = false;
+  bool hasClip = false;
+  Point? anchor;
 
   bool rotated = false;
   bool _setted = false;
 
   dynamic info;
-  Rect get rect => srcRect;
+  Rect? get rect => srcRect;
 
-  Frame([String type, Image img]) {
+  Frame([String type = "", Image? img]) {
     this.type = type;
     this.image = img;
   }
 
   double get width {
-    return this.dstRect != null ? this.dstRect.width : 0;
+    return this.dstRect != null ? this.dstRect!.width : 0;
   }
 
   double get height {
-    return this.dstRect != null ? this.dstRect.height : 0;
+    return this.dstRect != null ? this.dstRect!.height : 0;
   }
 
   bool get isEnabled {
@@ -73,10 +72,10 @@ class Frame {
 
   void rotateDstRectOnce(x, y) {
     if (this._setted != true) {
-      var l = this.dstRect.left;
-      var t = this.dstRect.top;
-      var w = this.dstRect.width;
-      var h = this.dstRect.height;
+      var l = this.dstRect!.left;
+      var t = this.dstRect!.top;
+      var w = this.dstRect!.width;
+      var h = this.dstRect!.height;
 
       List pos = this.coordinateRotate(x, y);
       var x1 = pos[0];
@@ -88,10 +87,10 @@ class Frame {
   }
 
   List coordinateRotate(x, y) {
-    var cx = x;
-    var cy = y;
-    var x0 = y;
-    var y0 = (1 - x);
+    double cx = x;
+    double cy = y;
+    double x0 = y;
+    double y0 = (1.0 - x);
 
     var point = MathUtil.coordinateRotate(-pi / 2, x0, y0, cx, cy);
     var x1 = MathUtil.round(point[0], 4);

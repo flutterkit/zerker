@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 class MathUtil {
   static double round(double n, [int size = 4]) {
-    int k = pow(10, size);
+    num k = pow(10, size);
     return (n * k).round() / k;
   }
 

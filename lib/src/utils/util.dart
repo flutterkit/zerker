@@ -55,7 +55,7 @@ class Util {
   ///  - ['run{1-3}.jpg'] => ["run1.jpg", "run2.jpg", "run3.jpg"]
   ///
   ////////////////////////////////////////////////////////////
-  static List convertConsecutiveList(List arr, [String prefix]) {
+  static List convertConsecutiveList(List arr, [String? prefix]) {
     if (arr.length == 1 && arr[0] is String) {
       String str = arr[0];
       RegExp exp1 = new RegExp(r"^([0-9]*)\-([0-9]*)$");
@@ -63,7 +63,7 @@ class Util {
 
       if (exp1.hasMatch(str) || exp2.hasMatch(str)) {
         List result = [];
-        int a, b;
+        int a = 0, b = 0;
 
         if (exp1.hasMatch(str)) {
           List ints = str.split("-");
@@ -76,14 +76,15 @@ class Util {
         } else if (exp2.hasMatch(str)) {
           Iterable<Match> matches = exp2.allMatches(str);
           for (Match m in matches) {
-            String s = m.group(0);
+            String? s = m.group(0);
+            if (s == null) continue;
             s = s.replaceAll("{", "").replaceAll("}", "");
             List ints = s.split("-");
             a = int.parse(ints[0]);
             b = int.parse(ints[1]);
           }
 
-          for (var i = a; i <= b; i++) {
+          for (int i = a; i <= b; i++) {
             result.add(str.replaceAll(exp2, "$i"));
           }
         }
@@ -131,7 +132,7 @@ class Util {
     return resultVal ?? defaultVal;
   }
 
-  static dynamic getListVal(List list, int key) {
+  static dynamic getListVal(List? list, int key) {
     if (list == null) return null;
 
     int index = key >= list.length ? list.length - 1 : key;
@@ -139,6 +140,7 @@ class Util {
   }
 
   static void fullScreen() {
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    //SystemChrome.setEnabledSystemUIMode();
+    //SystemChrome.setEnabledSystemUIOverlays([]);
   }
 }

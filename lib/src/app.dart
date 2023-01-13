@@ -11,21 +11,19 @@ class ZKApp {
   String type = "ZKApp";
   String id = Util.uuid();
 
-  ZKStage stage;
+  ZKStage stage = ZKStage();
   bool debug = false;
   bool destroyed = false;
-  Function onDispose;
-
+  Function? onDispose;
   double delay = 1000 / 60;
   int _fps = 60;
 
   ZKApp() {
-    this.stage = new ZKStage();
     this.stage.context = new ZKContext();
   }
 
-  ZKContext get context {
-    return this?.stage?.context;
+  ZKContext? get context {
+    return this.stage.context;
   }
 
   ////////////////////////////////////////////////////////////
@@ -51,27 +49,27 @@ class ZKApp {
   }
 
   Size get size {
-    return this.context?.size;
+    return this.context!.size;
   }
 
   double get appWidth {
-    return this.context?.appWidth;
+    return this.context!.appWidth;
   }
 
   double get appHeight {
-    return this.context?.appHeight;
+    return this.context!.appHeight;
   }
 
   Color getRandomColor() {
-    return this.context?.getRandomColor();
+    return this.context!.getRandomColor();
   }
 
   double getRandomA2B(double a, double b) {
-    return this.context.getRandomA2B(a, b);
+    return this.context!.getRandomA2B(a, b);
   }
 
   Point getRandomPosition() {
-    return this.context?.getRandomPosition();
+    return this.context!.getRandomPosition();
   }
 
   static void fullScreen() {
@@ -117,8 +115,7 @@ class ZKApp {
 
     this.destroyed = true;
     this.stage.dispose();
-    this.stage = null;
-    if (this.onDispose != null) onDispose();
+    if (this.onDispose != null) onDispose!();
   }
 
   String toString() {

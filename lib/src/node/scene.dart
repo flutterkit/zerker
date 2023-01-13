@@ -11,20 +11,20 @@ class ZKScene extends ZKContainer {
   /// Admission/appearance animation - Fade in and out
   ///
   ////////////////////////////////////////////////////////////
-  void fadeIn([int time = 1600, Function onComplete]) {
+  void fadeIn([int time = 1600, Function(dynamic obj)? onComplete]) {
     this.alpha = 0;
     ZKTween(this)
         .to({"alpha": 1}, time)
         .easing(Ease.quart.easeOut)
-        .onComplete(onComplete)
+        .onComplete(onComplete!)
         .start();
   }
 
-  void fadeOut([int time = 1000, Function onComplete]) {
+  void fadeOut([int time = 1000, Function(dynamic obj)? onComplete]) {
     ZKTween(this)
         .to({"alpha": 0}, time)
         .easing(Ease.quart.easeIn)
-        .onComplete(onComplete)
+        .onComplete(onComplete!)
         .autoRemove()
         .start();
   }
@@ -35,10 +35,10 @@ class ZKScene extends ZKContainer {
   ///
   ////////////////////////////////////////////////////////////
   void moveIn(
-      {double x,
-      double y,
+      {double? x,
+      double? y,
       int time = 1600,
-      Function onComplete,
+      Function(dynamic obj)? onComplete,
       dynamic ease}) {
     this.alpha = 0;
     var oldPos = this.position.clone();
@@ -48,15 +48,15 @@ class ZKScene extends ZKContainer {
     ZKTween(this)
         .to({"alpha": 1, "x": oldPos.x, "y": oldPos.y}, time)
         .easing(ease ?? Ease.quart.easeOut)
-        .onComplete(onComplete)
+        .onComplete(onComplete!)
         .start();
   }
 
   void moveOut(
-      {double x,
-      double y,
+      {double? x,
+      double? y,
       int time = 1000,
-      Function onComplete,
+      Function(dynamic obj)? onComplete,
       dynamic ease}) {
     x = x ?? this.position.x;
     y = y ?? this.position.y;
@@ -64,7 +64,7 @@ class ZKScene extends ZKContainer {
     ZKTween(this)
         .to({"alpha": 0, "x": x, "y": y}, time)
         .easing(ease ?? Ease.quart.easeIn)
-        .onComplete(onComplete)
+        .onComplete(onComplete!)
         .autoRemove()
         .start();
   }

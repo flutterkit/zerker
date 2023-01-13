@@ -2,17 +2,17 @@ import "dart:ui";
 import "../animate/frame.dart";
 
 abstract class BaseTexture {
-  Image image;
+  Image? image;
 
-  String type;
+  String type = "";
 
   List<Frame> list = [];
 
   int get length;
 
-  Size get size;
+  Size? get size;
 
-  Frame getFrame(dynamic key);
+  Frame? getFrame(dynamic key);
 
   void generateFrames();
 

@@ -4,10 +4,10 @@ import "../animate/frame.dart";
 
 class SpriteSheet extends BaseTexture {
   String type = "spritesheet";
-  Size frameSize;
+  Size? frameSize;
 
-  int row;
-  int col;
+  int row = 0;
+  int col = 0;
 
   SpriteSheet(Image image, Size frameSize) {
     this.image = image;
@@ -28,7 +28,7 @@ class SpriteSheet extends BaseTexture {
   }
 
   Size get size {
-    return Size(image.width.toDouble(), image.height.toDouble());
+    return Size(image!.width.toDouble(), image!.height.toDouble());
   }
 
   ////////////////////////////////////////////////////////////
@@ -37,14 +37,13 @@ class SpriteSheet extends BaseTexture {
   ///   c1 ...
   ////////////////////////////////////////////////////////////
   void generateFrames() {
-    var w = frameSize.width;
-    var h = frameSize.height;
+    double w = frameSize?.width ?? 1;
+    double h = frameSize?.height ?? 1;
 
     for (int i = 0; i < this.col; i++) {
       for (int j = 0; j < this.row; j++) {
         Frame frame = new Frame(this.type);
-        frame.image = image;
-
+        frame.image = image!;
         frame.setSrcRect(j * w, i * h, w, h);
         frame.setDstRect(0, 0, w, h);
         list.add(frame);

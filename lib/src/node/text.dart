@@ -1,13 +1,11 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-
 import './node.dart';
 
 class ZKText extends ZKNode {
-  TextPainter _painter;
-  TextStyle _style;
-  TextSpan _span;
-  bool _layouted;
+  TextPainter? _painter;
+  TextStyle? _style;
+  TextSpan? _span;
+  bool _layouted = false;
   Offset _offset = new Offset(0, 0);
 
   @override
@@ -29,17 +27,17 @@ class ZKText extends ZKNode {
   /// Create TextStyle TextSpan and TextPainter
   ///
   ////////////////////////////////////////////////////////////
-  TextStyle createStyle() {
+  TextStyle? createStyle() {
     _style = TextStyle(inherit: false, color: Colors.blue, fontSize: 16.0);
     return _style;
   }
 
-  TextSpan createTextSpan([String t = ""]) {
+  TextSpan? createTextSpan([String t = ""]) {
     _span = new TextSpan(text: t, style: _style);
     return _span;
   }
 
-  TextPainter createTextPainter() {
+  TextPainter? createTextPainter() {
     _painter = new TextPainter(
         text: _span,
         textAlign: TextAlign.center,
@@ -59,27 +57,27 @@ class ZKText extends ZKNode {
 
   @override
   double get oriWidth {
-    return _layouted ? this._painter.width : 0;
+    return _layouted ? this._painter!.width : 0;
   }
 
   @override
   double get oriHeight {
-    return _layouted ? this._painter.height : 0;
+    return _layouted ? this._painter!.height : 0;
   }
 
-  get text {
-    return _span != null ? _span.text : "";
+  String get text {
+    return _span != null ? _span!.text ?? "" : "";
   }
 
   set text(String t) {
     this.setText(t);
   }
 
-  get style {
+  TextStyle? get style {
     return _style;
   }
 
-  set style(TextStyle s) {
+  set style(TextStyle? s) {
     _style = s;
     this.setText(this.text);
   }
@@ -92,28 +90,28 @@ class ZKText extends ZKNode {
   void setStyle(
       {bool inherit: false,
       Color color: Colors.blue,
-      Color backgroundColor,
+      Color? backgroundColor,
       double fontSize: 16.0,
-      FontWeight fontWeight,
-      FontStyle fontStyle,
-      double letterSpacing,
-      double wordSpacing,
-      double height,
-      Paint background,
-      List<Shadow> shadows,
-      TextDecoration decoration,
-      Color decorationColor,
-      TextDecorationStyle decorationStyle,
-      double decorationThickness,
-      String fontFamily,
+      FontWeight? fontWeight,
+      FontStyle? fontStyle,
+      double? letterSpacing,
+      double? wordSpacing,
+      double? height,
+      Paint? background,
+      List<Shadow>? shadows,
+      TextDecoration? decoration,
+      Color? decorationColor,
+      TextDecorationStyle? decorationStyle,
+      double? decorationThickness,
+      String? fontFamily,
 
       /// text pos style
       TextAlign textAlign: TextAlign.center,
       TextDirection textDirection: TextDirection.ltr,
       double textScaleFactor: 1.0,
-      int maxLines,
-      String ellipsis,
-      StrutStyle strutStyle,
+      int? maxLines,
+      String? ellipsis,
+      StrutStyle? strutStyle,
       TextWidthBasis textWidthBasis: TextWidthBasis.parent}) {
     _style = TextStyle(
       inherit: inherit,
@@ -147,28 +145,28 @@ class ZKText extends ZKNode {
       {TextAlign textAlign: TextAlign.center,
       TextDirection textDirection: TextDirection.ltr,
       double textScaleFactor: 1.0,
-      int maxLines,
-      String ellipsis,
-      StrutStyle strutStyle,
+      int? maxLines,
+      String? ellipsis,
+      StrutStyle? strutStyle,
       TextWidthBasis textWidthBasis: TextWidthBasis.parent}) {
-    _painter.textAlign = textAlign;
-    _painter.textDirection = textDirection;
-    _painter.textScaleFactor = textScaleFactor;
-    _painter.maxLines = maxLines;
-    _painter.ellipsis = ellipsis;
-    _painter.strutStyle = strutStyle;
-    _painter.textWidthBasis = textWidthBasis;
+    _painter?.textAlign = textAlign;
+    _painter?.textDirection = textDirection;
+    _painter?.textScaleFactor = textScaleFactor;
+    _painter?.maxLines = maxLines;
+    _painter?.ellipsis = ellipsis;
+    _painter?.strutStyle = strutStyle;
+    _painter?.textWidthBasis = textWidthBasis;
 
     this.setText(this.text);
   }
 
   void layout() {
-    _painter.layout();
+    _painter?.layout();
     _layouted = true;
   }
 
   void setText(String t) {
-    _painter.text = this.createTextSpan(t);
+    _painter?.text = this.createTextSpan(t);
     this.layout();
   }
 
@@ -178,8 +176,8 @@ class ZKText extends ZKNode {
   ///
   ////////////////////////////////////////////////////////////
   @override
-  void draw(Canvas canvas, [Size size]) {
-    _painter.paint(canvas, _offset);
+  void draw(Canvas canvas, [Size? size]) {
+    _painter!.paint(canvas, _offset);
   }
 
   @override

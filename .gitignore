@@ -23,3 +23,4 @@ example/.history
 example/.svn/
 example/pubspec.lock
 example/.vscode/
+.vscode/

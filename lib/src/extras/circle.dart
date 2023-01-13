@@ -25,7 +25,7 @@ class ZKCircle extends ZKNode {
     return 2 * radius;
   }
 
-  Offset _offset;
+  Offset _offset = Offset(0, 0);
   double _radius = 10;
 
   ////////////////////////////////////////////////////////////
@@ -33,13 +33,17 @@ class ZKCircle extends ZKNode {
   /// ZKCircle constructor
   ///
   ////////////////////////////////////////////////////////////
-  ZKCircle(double radius, [Color color]) : super() {
+  ZKCircle(double radius, [Color? color]) : super() {
     this.radius = radius;
     if (color != null) this.color = color;
   }
 
+  void setCenter(Offset offset) {
+    _offset = offset;
+  }
+
   @override
-  void draw(Canvas canvas, [Size size]) {
+  void draw(Canvas canvas, [Size? size]) {
     canvas.drawCircle(_offset, radius, this.paint);
   }
 }

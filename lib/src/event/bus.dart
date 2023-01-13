@@ -8,7 +8,7 @@ class ZKBus {
   static Map<String, List<Function>> _events = {};
 
   static void emit(String eventName, [dynamic args]) {
-    List<Function> cbs = ZKBus._events[eventName];
+    List<Function>? cbs = ZKBus._events[eventName];
 
     if (cbs != null) {
       for (var i = 0, l = cbs.length; i < l; i++) {
@@ -27,10 +27,10 @@ class ZKBus {
       ZKBus._events[eventName] = [];
     }
 
-    ZKBus._events[eventName].add(callback);
+    ZKBus._events[eventName]?.add(callback);
   }
 
-  static void off(String eventName, [Function callback]) {
+  static void off(String eventName, [Function? callback]) {
     var cbs = ZKBus._events[eventName];
     if (cbs == null) {
       return;
@@ -53,7 +53,7 @@ class ZKBus {
   }
 
   static void once(String eventName, Function callback) {
-    Function handler;
+    Function? handler;
     handler = ([args]) {
       ZKBus.off(eventName, handler);
       if (args == null)

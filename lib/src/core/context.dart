@@ -5,22 +5,22 @@ import '../math/point.dart';
 import '../math/mathutil.dart';
 
 class ZKContext {
-  Rect rect;
-  double ratio;
-  Offset offset;
+  Rect? rect;
+  double ratio = 0.0;
+  Offset? offset;
   dynamic expansion;
 
-  Size _size;
+  Size? _size;
   Point _pos = Point(0, 0);
 
   Size get size {
-    return _size;
+    return _size!;
   }
 
   set size(Size s) {
     _size = s;
-    rect = Rect.fromLTWH(0, 0, _size == null ? 0 : _size.width,
-        _size == null ? 0 : _size.height);
+    rect = Rect.fromLTWH(0, 0, _size == null ? 0 : _size!.width,
+        _size == null ? 0 : _size!.height);
   }
 
   double get screenWidth {

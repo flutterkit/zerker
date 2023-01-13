@@ -5,14 +5,14 @@ class ZKEvent {
   dynamic target;
 
   double get dx {
-    return local != null ? local.dx : 0.0;
+    return local != null ? local!.dx : 0.0;
   }
 
   double get dy {
-    return local != null ? local.dy : 0.0;
+    return local != null ? local!.dy : 0.0;
   }
 
-  Offset get local {
+  Offset? get local {
     return details != null ? details?.localPosition : null;
   }
 

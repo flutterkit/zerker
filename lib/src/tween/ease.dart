@@ -125,11 +125,11 @@ class Expo extends BaseEasing {
   }
 
   double easeIn(double k) {
-    return k == 0 ? 0 : pow(1024, k - 1);
+    return k == 0 ? 0.0 : pow(1024.0, k - 1).toDouble();
   }
 
   double easeOut(double k) {
-    return k == 1 ? 1 : 1 - pow(2, -10 * k);
+    return k == 1 ? 1 : 1 - pow(2, -10 * k).toDouble();
   }
 
   double easeInOut(double k) {

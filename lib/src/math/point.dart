@@ -2,8 +2,8 @@ import "dart:math" show sqrt;
 import 'package:flutter/material.dart';
 
 class Point {
-  double x;
-  double y;
+  double x = 0.0;
+  double y = 0.0;
 
   Point(double x, double y) {
     this.x = x;

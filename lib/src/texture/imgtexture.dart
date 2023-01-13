@@ -19,18 +19,17 @@ class ImgTexture extends BaseTexture {
   }
 
   Size get size {
-    return Size(image.width.toDouble(), image.height.toDouble());
+    return Size(image!.width.toDouble(), image!.height.toDouble());
   }
 
   void generateFrames() {
-    var w = image.width.toDouble();
-    var h = image.height.toDouble();
+    var w = image?.width.toDouble();
+    var h = image?.height.toDouble();
 
     Frame frame = new Frame(this.type);
-    frame.image = image;
+    frame.image = image!;
     frame.setSrcRect(0, 0, w, h);
     frame.setDstRect(0, 0, w, h);
-
     list.add(frame);
   }
 }

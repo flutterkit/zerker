@@ -9,16 +9,16 @@ import '../texture/basetexture.dart';
 class ZKImage extends ZKNode {
   @override
   String type = "ZKImage";
-  Function onLoad;
-  Function onError;
+  Function? onLoad;
+  Function? onError;
 
   /// Texture
-  BaseTexture texture;
-  String textureType;
+  BaseTexture? texture;
+  String textureType = "";
   Paint strokePaint = Paint()..style = PaintingStyle.stroke;
 
-  Timer _timer;
-  Rect _clip;
+  Timer? _timer;
+  Rect? _clip;
 
   ////////////////////////////////////////////////////////////
   ///
@@ -27,32 +27,32 @@ class ZKImage extends ZKNode {
   ////////////////////////////////////////////////////////////
   @override
   double get oriWidth {
-    return frame != null ? frame.width : 0;
+    return frame != null ? frame!.width : 0;
   }
 
   @override
   double get oriHeight {
-    return frame != null ? frame.height : 0;
+    return frame != null ? frame!.height : 0;
   }
 
-  Image get image {
-    return texture != null ? texture.image : null;
+  Image? get image {
+    return texture != null ? texture!.image : null;
   }
 
   set url(String url) {
     this.load(url);
   }
 
-  set image(Image img) {
-    this.texture = ImgTexture(img);
+  set image(Image? img) {
+    this.texture = ImgTexture(img!);
   }
 
-  set clip(Rect c) {
+  set clip(Rect? c) {
     this._clip = c;
-    if (this.texture != null) this.texture.setAllRectByClip(c);
+    if (this.texture != null) this.texture?.setAllRectByClip(c!);
   }
 
-  get clip {
+  Rect? get clip {
     return this._clip;
   }
 
@@ -61,7 +61,7 @@ class ZKImage extends ZKNode {
   /// ZKImage constructor
   ///
   ////////////////////////////////////////////////////////////
-  ZKImage([String url]) : super() {
+  ZKImage([String? url]) : super() {
     if (url != null) this.lazyLoad(url);
     this.textureType = "image";
   }
@@ -69,22 +69,22 @@ class ZKImage extends ZKNode {
   void lazyLoad(String url, [int delay = 0]) {
     _timer = new Timer(Duration(milliseconds: delay), () {
       this.load(url);
-      _timer.cancel();
+      _timer?.cancel();
     });
   }
 
   void load(String url) async {
     try {
       this.texture = await ZKAssets.loadImage(path: url);
-      if (onLoad != null) onLoad(url);
+      if (onLoad != null) onLoad!(url);
     } catch (e) {
-      if (onError != null) onError(e);
+      if (onError != null) onError!(e);
     }
   }
 
-  Frame get frame {
+  Frame? get frame {
     if (this.texture == null) return null;
-    return this.texture.getFrame(0);
+    return this.texture?.getFrame(0);
   }
 
   ////////////////////////////////////////////////////////////
@@ -93,10 +93,11 @@ class ZKImage extends ZKNode {
   ///
   ////////////////////////////////////////////////////////////
   @override
-  void draw(Canvas canvas, [Size size]) {
+  void draw(Canvas canvas, [Size? size]) {
     if (this.frame == null) return;
-    canvas.drawImageRect(
-        this.frame.image, this.frame.srcRect, this.frame.dstRect, this.paint);
+
+    canvas.drawImageRect(this.frame!.image!, this.frame!.srcRect!,
+        this.frame!.dstRect!, this.paint);
 
     if (this.debug) {
       canvas.drawCircle(this.center, 5.0, this.paint);
@@ -111,7 +112,7 @@ class ZKImage extends ZKNode {
     try {
       if (this.clip != null) this.clip = null;
       //if (this.frame != null) this.frame.dispose();
-      _timer.cancel();
+      _timer?.cancel();
     } catch (e) {}
   }
 }

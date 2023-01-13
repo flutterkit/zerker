@@ -10,29 +10,27 @@ class ZKScrollBg extends ZKContainer {
 
   @override
   bool interactive = false;
+  Function? onLoad;
+  int time = 0;
+  int count = 0;
+  String direction = "";
+  double bgFragWidth = 0;
+  double bgFragHeight = 0;
 
-  Function onLoad;
-
-  int time;
-  int count;
-  String direction;
-  double bgFragWidth;
-  double bgFragHeight;
-
-  int _time;
-  double _width;
-  double _height;
+  int _time = 0;
+  double _width = 0;
+  double _height = 0;
   int _loadIndex = 0;
   bool _loaded = false;
   String _status = "play";
   List<ZKImage> _bgList = [];
 
   double get overWidth {
-    return _width ?? this.context.appWidth;
+    return _width == 0 ? this.context!.appWidth : _width;
   }
 
   double get overHeight {
-    return _height ?? this.context.appHeight;
+    return _height == 0 ? this.context!.appHeight : _height;
   }
 
   ////////////////////////////////////////////////////////////
@@ -41,23 +39,22 @@ class ZKScrollBg extends ZKContainer {
   ///
   ////////////////////////////////////////////////////////////
   ZKScrollBg(
-      {String key,
-      String image,
-      int total,
+      {String? key,
+      String? image,
+      int? total,
       int count = 2,
-      double width,
-      double height,
+      double? width,
+      double? height,
       int time = DEFAULT_TIME,
       String direction = 'left'})
       : super() {
     this.count = total ?? count;
-    this._width = width;
-    this._height = height;
+    this._width = width ?? 10;
+    this._height = height ?? 10;
     this._time = time;
     this.direction = direction;
     this.anchor = Point(0.0, 0.0);
-
-    this._createBgList(key ?? image);
+    this._createBgList(key ?? image ?? "ZKScrollBg");
   }
 
   void play() {
@@ -98,7 +95,7 @@ class ZKScrollBg extends ZKContainer {
           this.oriHeight = bgFragHeight;
         }
 
-        if (onLoad != null) onLoad();
+        if (onLoad != null) onLoad!();
         this.play();
       }
     };
