@@ -168,7 +168,7 @@ class Elastic extends BaseEasing {
     var s, a = 0.1, p = 0.4;
     if (k == 0) return 0;
     if (k == 1) return 1;
-    if (a == null || a < 1) {
+    if (a < 1) {
       a = 1;
       s = p / 4;
     } else
@@ -180,7 +180,7 @@ class Elastic extends BaseEasing {
     var s, a = 0.1, p = 0.4;
     if (k == 0) return 0;
     if (k == 1) return 1;
-    if (a == null || a < 1) {
+    if (a < 1) {
       a = 1;
       s = p / 4;
     } else
@@ -192,7 +192,7 @@ class Elastic extends BaseEasing {
     var s, a = 0.1, p = 0.4;
     if (k == 0) return 0;
     if (k == 1) return 1;
-    if (a == null || a < 1) {
+    if (a < 1) {
       a = 1;
       s = p / 4;
     } else

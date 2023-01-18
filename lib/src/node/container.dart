@@ -41,7 +41,8 @@ class ZKContainer extends ZKNode {
   }
 
   void addChild(ZKNode child) {
-    this.addChildAt(child, this.children.length);
+    child.parent = this;
+    this.children.add(child);
   }
 
   void removeChild(ZKNode child) {

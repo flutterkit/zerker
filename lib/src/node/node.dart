@@ -83,6 +83,12 @@ class ZKNode {
     return _color;
   }
 
+  set colorFilter(ColorFilter filter) {
+    this.paint.colorFilter = filter;
+  }
+
+  BlendMode? colorFilterBlendMode;
+
   set color(Color? c) {
     _color = c;
     if (c != null) this.paint.color = c;
