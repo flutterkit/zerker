@@ -11,7 +11,7 @@ description: Zerker is a flexible and lightweight flutter canvas graphic animati
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.1.0
+version: 2.1.1
 homepage: https://github.com/flutterkit/zerker
 
 environment:
