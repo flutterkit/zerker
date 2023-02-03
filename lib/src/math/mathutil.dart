@@ -2,6 +2,12 @@ import "dart:math";
 import 'package:flutter/widgets.dart';
 
 class MathUtil {
+  static const double PI = 3.14159267;
+  static const double PI_2 = PI / 2;
+  static const double PIx2 = PI * 2;
+  static const double PI_180 = PI / 180;
+  static const double N180_PI = 180 / PI;
+
   static double round(double n, [int size = 4]) {
     num k = pow(10, size);
     return (n * k).round() / k;

@@ -46,4 +46,10 @@ class ZKCircle extends ZKNode {
   void draw(Canvas canvas, [Size? size]) {
     canvas.drawCircle(_offset, radius, this.paint);
   }
+
+  @override
+  void reset() {
+    super.reset();
+    //radius = 10;
+  }
 }

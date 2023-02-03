@@ -16,6 +16,9 @@ export 'src/extras/rect.dart';
 export 'src/extras/button.dart';
 export 'src/extras/circle.dart';
 export 'src/extras/scrollbg.dart';
+export 'src/extras/polygon.dart';
+export 'src/extras/star.dart';
+export 'src/extras/flower.dart';
 
 export 'src/event/bus.dart';
 export 'src/event/event.dart';

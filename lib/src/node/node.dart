@@ -2,6 +2,7 @@ import "dart:math";
 import 'package:flutter/material.dart';
 
 import "../core/context.dart";
+import "../core/data.dart";
 import "../utils/util.dart";
 import '../event/event.dart';
 import '../math/point.dart';
@@ -26,6 +27,7 @@ class ZKNode {
 
   ZKNode? parent;
   Canvas? canvas;
+  Data data = Data();
   Paint paint = new Paint();
 
   ZKContext? context;
@@ -84,6 +86,7 @@ class ZKNode {
   }
 
   set colorFilter(ColorFilter filter) {
+    paint.colorFilter = null;
     this.paint.colorFilter = filter;
   }
 
@@ -202,6 +205,21 @@ class ZKNode {
 
   void _setPaintAlpha(double a) {
     this.paint.color = this.paint.color.withOpacity(a);
+  }
+
+  void reset() {
+    this.position.reset();
+    this.anchor.reset();
+    this.scale.reset();
+    this.skew.reset();
+    this.rotation = 0;
+    this.alpha = 1;
+    this.worldAlpha = 1;
+
+    this.parent = null;
+    this.onTapDown = null;
+    this.onTapUp = null;
+    this.onTouchMove = null;
   }
 
   void dispose() {
