@@ -17,7 +17,7 @@ At the same time, you can create a lot of simple games with Zerker. Zerker conta
 
 #### ➤ More detailed documentation about Zerker is here [https://flutterkit.github.io/zerkerdocs/](https://flutterkit.github.io/zerkerdocs/)
 
-![An image](https://flutterkit.github.io/zerkerdocs/images/wallpaper/08.jpg)
+![An image](https://flutterkit.github.io/zerkerdocs/images/wallpaper/04.jpg)
 
 ## Installation
 
