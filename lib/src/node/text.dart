@@ -82,6 +82,10 @@ class ZKText extends ZKNode {
     this.setText(this.text);
   }
 
+  TextPainter? get painter() {
+    return _painter;
+  }
+
   ////////////////////////////////////////////////////////////
   ///
   /// Set the style of the derivative method
@@ -113,7 +117,7 @@ class ZKText extends ZKNode {
       String? ellipsis,
       StrutStyle? strutStyle,
       TextWidthBasis textWidthBasis: TextWidthBasis.parent}) {
-    _style = TextStyle(
+    _style = _style?.merge(TextStyle(
       inherit: inherit,
       color: color,
       backgroundColor: backgroundColor,
@@ -129,7 +133,7 @@ class ZKText extends ZKNode {
       decorationColor: decorationColor,
       decorationStyle: decorationStyle,
       decorationThickness: decorationThickness,
-    );
+    ));
 
     this.setPainterStyle(
         textAlign: textAlign,
