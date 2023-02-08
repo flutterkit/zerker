@@ -82,7 +82,7 @@ class ZKText extends ZKNode {
     this.setText(this.text);
   }
 
-  TextPainter? get painter() {
+  TextPainter? get painter {
     return _painter;
   }
 
