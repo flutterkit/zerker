@@ -28,7 +28,7 @@ dependencies:
   zerker: <latest_version_here>
 ```
 
-###### More detailed installation steps, you can refer to here. [https://pub.dev/packages/zerker#-installing-tab-](https://pub.dev/packages/zerker#-installing-tab-)
+###### More detailed installation steps, you can refer to here. [https://pub.dev/packages/zerker/install](https://pub.dev/packages/zerker/install)
 
 ## Getting started
 
