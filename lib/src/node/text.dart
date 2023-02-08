@@ -174,6 +174,22 @@ class ZKText extends ZKNode {
     this.layout();
   }
 
+  void setColor(Color color) {
+    _style = _style!.merge(TextStyle(color: color));
+  }
+
+  void setFontFamily(String fontFamily) {
+    _style = _style!.merge(TextStyle(fontFamily: fontFamily));
+  }
+
+  void setFontSize(double fontSize) {
+    _style = _style!.merge(TextStyle(fontSize: fontSize));
+  }
+
+  void refresh() {
+    this.setText(this.text);
+  }
+
   ////////////////////////////////////////////////////////////
   ///
   /// Update, render and other related functions
