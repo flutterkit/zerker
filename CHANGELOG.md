@@ -1,3 +1,7 @@
+# 2.3.6
+- Unused import: 'dart:ui'.;
+- Using a colon as a separator before a default value is deprecated and will not be supported in language version 3.0 and later.
+
 # 2.1.0
 - ZKNode add colorFilter and colorFilterBlendMode prop;
 - Fix any warning log
