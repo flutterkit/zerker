@@ -44,7 +44,8 @@ class ZKContext {
   }
 
   double get deviceRatio {
-    return ui.window.devicePixelRatio;
+    return WidgetsBinding
+        .instance.platformDispatcher.views.first.devicePixelRatio;
   }
 
   double get appWidthDP {
@@ -60,7 +61,11 @@ class ZKContext {
   }
 
   bool isLandscape() {
-    Size s = ui.window.physicalSize / ui.window.devicePixelRatio;
+    Size os =
+        WidgetsBinding.instance.platformDispatcher.views.first.physicalSize;
+    double ratio =
+        WidgetsBinding.instance.platformDispatcher.views.first.devicePixelRatio;
+    Size s = os / ratio;
     bool landscape = s.width > s.height;
     return landscape;
   }
