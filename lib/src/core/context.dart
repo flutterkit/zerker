@@ -24,11 +24,15 @@ class ZKContext {
   }
 
   double get screenWidth {
-    return ui.window.physicalSize.width;
+    // https://stackoverflow.com/questions/76312328/flutter-3-10-window-is-deprecated-and-shouldnt-be-used
+    return WidgetsBinding
+        .instance.platformDispatcher.views.first.physicalSize.width;
   }
 
   double get screenHeight {
-    return ui.window.physicalSize.height;
+    // ui.window.physicalSize
+    return WidgetsBinding
+        .instance.platformDispatcher.views.first.physicalSize.height;
   }
 
   double get appWidth {
