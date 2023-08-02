@@ -15,7 +15,7 @@ class ImgLoader {
       {String path = "",
       Function? onLoad,
       Function? onError,
-      int timeout: 5000}) async {
+      int timeout = 5000}) async {
     ImageStream stream;
     ImageConfiguration imgConf = ImageConfiguration.empty;
     Completer<ui.Image> completer = Completer<ui.Image>();

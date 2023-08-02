@@ -92,10 +92,10 @@ class ZKText extends ZKNode {
   ///
   ////////////////////////////////////////////////////////////
   void setStyle(
-      {bool inherit: false,
-      Color color: Colors.blue,
+      {bool inherit = false,
+      Color color = Colors.blue,
       Color? backgroundColor,
-      double fontSize: 16.0,
+      double fontSize = 16.0,
       FontWeight? fontWeight,
       FontStyle? fontStyle,
       double? letterSpacing,
@@ -110,13 +110,13 @@ class ZKText extends ZKNode {
       String? fontFamily,
 
       /// text pos style
-      TextAlign textAlign: TextAlign.center,
-      TextDirection textDirection: TextDirection.ltr,
-      double textScaleFactor: 1.0,
+      TextAlign textAlign = TextAlign.center,
+      TextDirection textDirection = TextDirection.ltr,
+      double textScaleFactor = 1.0,
       int? maxLines,
       String? ellipsis,
       StrutStyle? strutStyle,
-      TextWidthBasis textWidthBasis: TextWidthBasis.parent}) {
+      TextWidthBasis textWidthBasis = TextWidthBasis.parent}) {
     _style = _style?.merge(TextStyle(
       inherit: inherit,
       color: color,
@@ -146,13 +146,13 @@ class ZKText extends ZKNode {
   }
 
   void setPainterStyle(
-      {TextAlign textAlign: TextAlign.center,
-      TextDirection textDirection: TextDirection.ltr,
-      double textScaleFactor: 1.0,
+      {TextAlign textAlign = TextAlign.center,
+      TextDirection textDirection = TextDirection.ltr,
+      double textScaleFactor = 1.0,
       int? maxLines,
       String? ellipsis,
       StrutStyle? strutStyle,
-      TextWidthBasis textWidthBasis: TextWidthBasis.parent}) {
+      TextWidthBasis textWidthBasis = TextWidthBasis.parent}) {
     _painter?.textAlign = textAlign;
     _painter?.textDirection = textDirection;
     _painter?.textScaleFactor = textScaleFactor;
