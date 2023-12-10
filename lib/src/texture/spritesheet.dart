@@ -42,7 +42,7 @@ class SpriteSheet extends BaseTexture {
 
     for (int i = 0; i < this.col; i++) {
       for (int j = 0; j < this.row; j++) {
-        Frame frame = new Frame(this.type);
+        Frame frame = Frame(this.type);
         frame.image = image!;
         frame.setSrcRect(j * w, i * h, w, h);
         frame.setDstRect(0, 0, w, h);

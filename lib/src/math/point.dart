@@ -11,7 +11,7 @@ class Point {
   }
 
   Point clone() {
-    return new Point(this.x, this.y);
+    return Point(this.x, this.y);
   }
 
   void copy(dynamic p) {

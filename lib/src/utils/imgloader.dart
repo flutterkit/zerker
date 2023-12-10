@@ -53,7 +53,7 @@ class ImgLoader {
       if (onError != null) onError("timeout");
     });
 
-    listener = new ImageStreamListener(onLoadHandler, onError: onErrorHandler);
+    listener = ImageStreamListener(onLoadHandler, onError: onErrorHandler);
     stream.addListener(listener);
 
     return await completer.future;

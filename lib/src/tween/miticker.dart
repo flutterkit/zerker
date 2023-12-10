@@ -5,7 +5,7 @@ Ticker? _ticker;
 class Miticker {
   static Ticker? init(Function func) {
     if (_ticker == null) {
-      _ticker = new Ticker((Duration duration) {
+      _ticker = Ticker((Duration duration) {
         func(duration);
       });
     }

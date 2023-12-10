@@ -6,6 +6,7 @@ import './event/event.dart';
 import './node/stage.dart';
 import "./utils/util.dart";
 import "./math/point.dart";
+import "./math/mathutil.dart";
 
 class ZKApp {
   String type = "ZKApp";
@@ -18,8 +19,11 @@ class ZKApp {
   double delay = 1000 / 60;
   int _fps = 60;
 
+  static bool enableFixLongInterval = false;
+  static double longIntervalTime = 0.5;
+
   ZKApp() {
-    this.stage.context = new ZKContext();
+    this.stage.context = ZKContext();
   }
 
   ZKContext? get context {
@@ -72,6 +76,14 @@ class ZKApp {
     return this.context!.getRandomPosition();
   }
 
+  double toSecond(int milliseconds) {
+    return MathUtil.toSecond(milliseconds);
+  }
+
+  double getTimeRatio(int milliseconds) {
+    return MathUtil.getTimeRatio(milliseconds);
+  }
+
   static void fullScreen() {
     return Util.fullScreen();
   }
@@ -111,6 +123,12 @@ class ZKApp {
   tapUp(ZKEvent event) {
     this.stage.tapUp(event);
   }
+
+  panStart(ZKEvent event) {}
+
+  panUpdate(ZKEvent event) {}
+
+  panEnd(ZKEvent event) {}
 
   dispose() {
     if (debug == true) print('Zerker:: Dispose $this');

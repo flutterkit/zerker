@@ -82,7 +82,7 @@ class Atlas extends BaseTexture {
       var px = Util.getByPath(obj, "pivot.x");
       var py = Util.getByPath(obj, "pivot.y");
 
-      Frame frame = new Frame(this.type);
+      Frame frame = Frame(this.type);
       frame.image = image!;
       frame.name = Util.getByPath(obj, "filename");
       frame.rotated = Util.getByPath(obj, "rotated");

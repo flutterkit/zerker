@@ -7,10 +7,10 @@ import 'dart:collection';
 ///
 ////////////////////////////////////////////////////////////
 class ListMap {
-  LinkedHashMap<String, dynamic> _map = new LinkedHashMap();
+  LinkedHashMap<String, dynamic> _map = LinkedHashMap();
 
   ListMap() {
-    //this._map = new LinkedHashMap();
+    //this._map = LinkedHashMap();
   }
 
   void add(String id, dynamic item) {

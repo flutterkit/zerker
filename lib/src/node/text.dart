@@ -6,7 +6,7 @@ class ZKText extends ZKNode {
   TextStyle? _style;
   TextSpan? _span;
   bool _layouted = false;
-  Offset _offset = new Offset(0, 0);
+  Offset _offset = Offset(0, 0);
 
   @override
   String type = "ZKText";
@@ -33,12 +33,12 @@ class ZKText extends ZKNode {
   }
 
   TextSpan? createTextSpan([String t = ""]) {
-    _span = new TextSpan(text: t, style: _style);
+    _span = TextSpan(text: t, style: _style);
     return _span;
   }
 
   TextPainter? createTextPainter() {
-    _painter = new TextPainter(
+    _painter = TextPainter(
         text: _span,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);

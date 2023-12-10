@@ -26,7 +26,7 @@ class ImgTexture extends BaseTexture {
     var w = image?.width.toDouble();
     var h = image?.height.toDouble();
 
-    Frame frame = new Frame(this.type);
+    Frame frame = Frame(this.type);
     frame.image = image!;
     frame.setSrcRect(0, 0, w, h);
     frame.setDstRect(0, 0, w, h);

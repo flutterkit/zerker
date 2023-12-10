@@ -7,7 +7,7 @@ import "../utils/listmap.dart";
 
 class ZKGraphic extends ZKNode {
   Paint? _currentPaint;
-  ListMap _drawList = new ListMap();
+  ListMap _drawList = ListMap();
   double _alpha = 1;
 
   @override
@@ -17,7 +17,7 @@ class ZKGraphic extends ZKNode {
   String type = "ZKGraphic";
 
   ZKGraphic() : super() {
-    //this._drawList = new ListMap();
+    //this._drawList = ListMap();
     this.anchor.set(0.0, 0.0);
   }
 
@@ -79,7 +79,7 @@ class ZKGraphic extends ZKNode {
 
   void drawTriangle(
       double x1, double y1, double x2, double y2, double x3, double y3) {
-    Path path = new Path();
+    Path path = Path();
     path.moveTo(x1, y1);
     path.lineTo(x2, y2);
     path.lineTo(x3, y3);

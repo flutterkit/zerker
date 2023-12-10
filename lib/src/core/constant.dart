@@ -14,4 +14,6 @@ class Constant {
   static const String ALL_FRAMES = "__ZK_ALL_FRAMES__";
 
   static double ratio = 1;
+
+  static double afps = 0.01666;
 }

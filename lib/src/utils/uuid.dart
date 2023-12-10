@@ -4,7 +4,7 @@
 import 'dart:math' show Random;
 
 class Uuid {
-  final Random _random = new Random();
+  final Random _random = Random();
 
   String v4() {
     int special = 8 + _random.nextInt(4);

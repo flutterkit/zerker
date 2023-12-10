@@ -10,6 +10,7 @@ class Zerker extends StatelessWidget {
   final String id = Util.uuid();
   final ZKApp app;
   final bool? interactive;
+  final bool? enablePan;
   final bool? clip;
   final double? width;
   final double? height;
@@ -18,6 +19,7 @@ class Zerker extends StatelessWidget {
     required this.app,
     Key? key,
     this.interactive,
+    this.enablePan,
     this.clip,
     this.width,
     this.height,
@@ -37,15 +39,44 @@ class Zerker extends StatelessWidget {
     }
 
     if (interactive == true) {
-      return GestureDetector(
-        onTapDown: (TapDownDetails details) {
-          app.tapDown(ZKEvent.fromDetails(details));
-        },
-        onTapUp: (TapUpDetails details) {
-          app.tapUp(ZKEvent.fromDetails(details));
-        },
-        child: child,
-      );
+      if (enablePan == true) {
+        return GestureDetector(
+          onTapDown: (TapDownDetails details) {
+            app.tapDown(ZKEvent.fromDetails(details));
+          },
+          onTapUp: (TapUpDetails details) {
+            app.tapUp(ZKEvent.fromDetails(details));
+          },
+
+          /// pan events
+          onPanDown: (DragDownDetails details) {
+            app.tapDown(ZKEvent.fromDetails(details));
+          },
+          onPanStart: (DragStartDetails details) {
+            app.panStart(ZKEvent.fromDetails(details));
+          },
+          onPanUpdate: (DragUpdateDetails details) {
+            app.panUpdate(ZKEvent.fromDetails(details));
+          },
+          onPanEnd: (DragEndDetails details) {
+            app.panEnd(ZKEvent.fromDetails(details));
+          },
+          onPanCancel: () {
+            //app.panEnd(ZKEvent.fromDetails(DragEndDetails()));
+          },
+          child: child,
+        );
+      } else {
+        return GestureDetector(
+          onTapDown: (TapDownDetails details) {
+            app.tapDown(ZKEvent.fromDetails(details));
+          },
+          onTapUp: (TapUpDetails details) {
+            app.tapUp(ZKEvent.fromDetails(details));
+          },
+          child: child,
+        );
+      }
     } else {
       return child;
     }
@@ -103,11 +134,19 @@ class _ZerkerBox extends RenderBox
   }
 
   void _addTicker() {
-    _ticker = new Ticker((Duration duration) {
+    _ticker = Ticker((Duration duration) {
       if (app!.destroyed) return;
 
       _init();
       int time = duration.inMilliseconds - _oldTime;
+
+      // Fix the time difference caused by switching between front and back of the app
+      if (ZKApp.enableFixLongInterval &&
+          time > (ZKApp.longIntervalTime * 1000).toInt()) {
+        _oldTime = duration.inMilliseconds;
+        time = 0;
+      }
+
       if (app!.fps == 60) {
         updateAndPaint(time);
       } else {

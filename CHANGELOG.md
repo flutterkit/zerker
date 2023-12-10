@@ -1,3 +1,14 @@
+# 2.7.1
+- Add zkapp panStart panUpdate panEnd events.
+
+# 2.6.1
+- Fix the time difference caused by switching between front and back of the app
+
+# 2.5.2
+- Add auxiliary methods such as getTimeRatio and toSecond
+- Further optimize performance.
+
+
 # 2.3.6
 - Unused import: 'dart:ui'.;
 - Using a colon as a separator before a default value is deprecated and will not be supported in language version 3.0 and later.

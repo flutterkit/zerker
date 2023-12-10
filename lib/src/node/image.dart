@@ -67,7 +67,7 @@ class ZKImage extends ZKNode {
   }
 
   void lazyLoad(String url, [int delay = 0]) {
-    _timer = new Timer(Duration(milliseconds: delay), () {
+    _timer = Timer(Duration(milliseconds: delay), () {
       this.load(url);
       _timer?.cancel();
     });

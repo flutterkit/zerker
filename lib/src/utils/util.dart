@@ -7,7 +7,7 @@ class Util {
   ///
   ////////////////////////////////////////////////////////////
   static bool isNetUrl(String url) {
-    RegExp reg = new RegExp(r"(https?|ftp):\/\/([\w.]+\/?)\S*");
+    RegExp reg = RegExp(r"(https?|ftp):\/\/([\w.]+\/?)\S*");
     return reg.hasMatch(url);
   }
 
@@ -57,8 +57,8 @@ class Util {
   static List convertConsecutiveList(List arr, [String? prefix]) {
     if (arr.length == 1 && arr[0] is String) {
       String str = arr[0];
-      RegExp exp1 = new RegExp(r"^([0-9]*)\-([0-9]*)$");
-      RegExp exp2 = new RegExp(r"{([0-9]*)\-([0-9]*)}");
+      RegExp exp1 = RegExp(r"^([0-9]*)\-([0-9]*)$");
+      RegExp exp2 = RegExp(r"{([0-9]*)\-([0-9]*)}");
 
       if (exp1.hasMatch(str) || exp2.hasMatch(str)) {
         List result = [];

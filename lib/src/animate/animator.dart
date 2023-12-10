@@ -14,7 +14,7 @@ class Animator {
   Function? onComplete;
   String status = "stop";
 
-  ListMap _aniList = new ListMap();
+  ListMap _aniList = ListMap();
   Animation? _currentAni;
   int _framesLength = -1;
 
@@ -68,7 +68,7 @@ class Animator {
   ////////////////////////////////////////////////////////////
   void make(String name,
       [List? frames, int rate = Constant.RATE, bool loop = false]) {
-    Animation ani = new Animation(name, frames, rate, loop);
+    Animation ani = Animation(name, frames, rate, loop);
     ani.framesLength = framesLength;
     ani.onComplete = onComplete;
 

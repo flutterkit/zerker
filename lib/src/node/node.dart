@@ -13,10 +13,10 @@ class ZKNode {
   String id = "";
   String type = "ZKNode";
 
-  Point position = new Point(0.0, 0.0);
-  Point anchor = new Point(0.5, 0.5);
-  Point scale = new Point(1.0, 1.0);
-  Point skew = new Point(0.0, 0.0);
+  Point position = Point(0.0, 0.0);
+  Point anchor = Point(0.5, 0.5);
+  Point scale = Point(1.0, 1.0);
+  Point skew = Point(0.0, 0.0);
 
   double oriWidth = 0;
   double oriHeight = 0;
@@ -28,24 +28,24 @@ class ZKNode {
   ZKNode? parent;
   Canvas? canvas;
   Data data = Data();
-  Paint paint = new Paint();
+  Paint paint = Paint();
 
   ZKContext? context;
   dynamic expansion;
   double worldAlpha = 1;
 
-  Matrix matrix = new Matrix();
+  Matrix matrix = Matrix();
   double _alpha = 1;
   bool _debug = false;
   Color? _color;
 
   ZKNode() {
     this.id = Util.uuid();
-    // this.position = new Point(0.0, 0.0);
-    // this.anchor = new Point(0.5, 0.5);
-    // this.scale = new Point(1.0, 1.0);
-    // this.skew = new Point(0.0, 0.0);
-    // this.matrix = new Matrix();
+    // this.position = Point(0.0, 0.0);
+    // this.anchor = Point(0.5, 0.5);
+    // this.scale = Point(1.0, 1.0);
+    // this.skew = Point(0.0, 0.0);
+    // this.matrix = Matrix();
 
     this.init();
   }
@@ -55,7 +55,7 @@ class ZKNode {
   }
 
   void createPaint() {
-    //this.paint = new Paint();
+    //this.paint = Paint();
     this.paint.color = Colors.blue;
     this.paint.style = PaintingStyle.fill;
   }
@@ -139,6 +139,10 @@ class ZKNode {
 
   Offset get center {
     return Offset(regX, regY);
+  }
+
+  double getTimeRatio(int milliseconds) {
+    return MathUtil.getTimeRatio(milliseconds);
   }
 
   ////////////////////////////////////////////////////////////

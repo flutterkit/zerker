@@ -12,7 +12,7 @@ class ZKSprite extends ZKImage {
   String type = "ZKSprite";
 
   /// Animator
-  Animator animator = new Animator();
+  Animator animator = Animator();
   Timer? _timer;
 
   ZKSprite(
@@ -23,14 +23,14 @@ class ZKSprite extends ZKImage {
       double width = 100,
       double height = 100})
       : super() {
-    //this.animator = new Animator();
+    //this.animator = Animator();
     if (key != null) {
       this.texture = ZKAssets.getAsset(key);
       this.textureType = ZKAssets.getType(texture)!;
       if (this.texture == null)
         throw ("Zerker:: Sorry, this Key '$key' does not get any assets!");
 
-      _timer = new Timer(Duration(milliseconds: 0), () {
+      _timer = Timer(Duration(milliseconds: 0), () {
         this._loadComplete(this.texture!);
         _timer?.cancel();
       });

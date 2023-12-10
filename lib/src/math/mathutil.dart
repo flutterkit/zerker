@@ -1,5 +1,6 @@
 import "dart:math";
 import 'package:flutter/widgets.dart';
+import '../core/constant.dart';
 
 class MathUtil {
   static const double PI = 3.14159267;
@@ -26,6 +27,15 @@ class MathUtil {
 
   static double getRandomA2B(double a, double b) {
     return Random().nextDouble() * (b - a) + a;
+  }
+
+  static double toSecond(int milliseconds) {
+    return milliseconds / Duration.millisecondsPerSecond;
+  }
+
+  static double getTimeRatio(int milliseconds) {
+    double second = toSecond(milliseconds);
+    return second / Constant.afps;
   }
 
   static Color getRandomColor() {
