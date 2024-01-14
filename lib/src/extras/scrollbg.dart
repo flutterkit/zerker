@@ -194,6 +194,12 @@ class ZKScrollBg extends ZKContainer {
   }
 
   @override
+  void reset() {
+    super.reset();
+    this.anchor.reset();
+  }
+
+  @override
   void dispose() {
     super.dispose();
     this.forEach((bgFrag) {

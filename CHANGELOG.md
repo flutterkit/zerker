@@ -1,3 +1,6 @@
+# 2.7.2
+- Modify the node reset registration point to 0.5.
+
 # 2.7.1
 - Add zkapp panStart panUpdate panEnd events.
 

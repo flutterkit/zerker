@@ -213,7 +213,7 @@ class ZKNode {
 
   void reset() {
     this.position.reset();
-    this.anchor.reset();
+    this.anchor.set(0.5, 0.5);
     this.scale.reset();
     this.skew.reset();
     this.rotation = 0;

@@ -184,6 +184,12 @@ class ZKGraphic extends ZKNode {
   }
 
   @override
+  void reset() {
+    super.reset();
+    this.anchor.reset();
+  }
+
+  @override
   void dispose() {
     super.dispose();
     this.clear();
