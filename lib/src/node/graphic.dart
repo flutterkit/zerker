@@ -73,6 +73,12 @@ class ZKGraphic extends ZKNode {
     this._addDrawList("drawRect", Rect.fromLTRB(x, y, x + w, y + h));
   }
 
+  void drawRRect(double x, double y, double w, double h, [double radius = 10]) {
+    Rect rect = Rect.fromLTRB(x, y, x + w, y + h);
+    RRect rrect = RRect.fromRectAndRadius(rect, Radius.circular(radius));
+    this._addDrawList("drawRRect", rrect);
+  }
+
   void drawCircle(double x, double y, double radius) {
     this._addDrawList("drawCircle", Offset(x, y), radius);
   }
@@ -141,6 +147,12 @@ class ZKGraphic extends ZKNode {
       case "drawRect":
         {
           canvas?.drawRect(item["parm1"], item["paint"]);
+        }
+        break;
+
+      case "drawRRect":
+        {
+          canvas?.drawRRect(item["parm1"], item["paint"]);
         }
         break;
 

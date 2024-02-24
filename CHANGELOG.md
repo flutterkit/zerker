@@ -1,3 +1,6 @@
+# 2.7.5
+- ZKGraphics add drawRRect method.
+
 # 2.7.2
 - Modify the node reset registration point to 0.5.
 
