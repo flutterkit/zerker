@@ -27,20 +27,38 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _isZerkerVisible = true;
+
+  void _toggleZerkerVisibility() {
+    setState(() {
+      _isZerkerVisible = !_isZerkerVisible;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Center(
-          child: Zerker(
-              app: MyZKApp(),
-              clip: true,
-              interactive: true,
-              width: 350,
-              height: 350),
-        ));
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: _isZerkerVisible
+            ? Zerker(
+                app: MyZKApp(),
+                clip: true,
+                interactive: true,
+                width: 350,
+                height: 350,
+              )
+            : Container(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _toggleZerkerVisibility,
+        child: Icon(_isZerkerVisible ? Icons.visibility_off : Icons.visibility),
+        tooltip: _isZerkerVisible ? 'Hide Zerker' : 'Show Zerker',
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+    );
   }
 }
 
