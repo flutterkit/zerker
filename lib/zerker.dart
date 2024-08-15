@@ -1,7 +1,7 @@
 library zerker;
 
 export 'src/app.dart';
-export 'src/zerkerwidget.dart';
+export 'src/widget/zerkerwidget.dart';
 
 export 'src/node/node.dart';
 export 'src/node/text.dart';
