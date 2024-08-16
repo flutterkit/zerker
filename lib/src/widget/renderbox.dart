@@ -15,12 +15,10 @@ class ZerkerRenderObjectWidget extends LeafRenderObjectWidget {
     _ZerkerBox zerkerBox = _ZerkerBox(app: app!, clip: clip ?? false);
     return RenderProxyBox(zerkerBox);
   }
-
+  
   @override
-  void updateRenderObject(BuildContext context, _ZerkerBox renderObject) {
-    renderObject
-      ..app = app!
-      ..clip = clip ?? false;
+  void updateRenderObject(BuildContext context, RenderProxyBox renderProxyBox) {
+    renderProxyBox.child = _ZerkerBox(app: app!, clip: clip ?? false);
   }
 }
 
