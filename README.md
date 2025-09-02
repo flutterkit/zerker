@@ -2,7 +2,7 @@
 <br/>
 
 <div align=center>
-<a href="https://pub.dartlang.org/packages/zerker" target="_blank"><img src="https://img.shields.io/pub/v/zerker.svg" alt="pub package" /></a>
+<a href="https://pub.dev/packages/zerker" target="_blank"><img src="https://img.shields.io/pub/v/zerker.svg" alt="pub package" /></a>
 <a href="https://flutter.dev/" target="_blank"><img src="https://img.shields.io/badge/Made%20with-Flutter-5fc9f8.svg" alt="Made-with-Flutter" /></a>
 <a href="https://dart.dev/" target="_blank"><img src="https://img.shields.io/badge/Made%20with-Dart-13589c.svg" alt="Made-with-Dart" /></a>
 </div>
